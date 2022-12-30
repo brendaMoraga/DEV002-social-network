@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Inter:wght@600&family=Jost&family=Kantumruy+Pro:wght@700&family=La+Belle+Aurore&family=Lusitana&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Inter:wght@600&family=Jost&family=Kantumruy+Pro:wght@700&family=La+Belle+Aurore&family=Lusitana&family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Inter:wght@600&family=Jost&family=Kantumruy+Pro:wght@700&family=La+Belle+Aurore&family=Lusitana&family=Quicksand:wght@500&family=Shadows+Into+Light&display=swap');
+
 /* #root{
     width: 200px;
     height: 200px;
@@ -12,7 +16,6 @@
 body{
     display: flex;
     justify-content: center;
-   
 
 }
 .ContainerPadre{
@@ -30,8 +33,7 @@ body{
     align-items: center;
     width: 100%;
     height: max-content;
-    padding: 40% 0 3% 3%;
-   
+    padding: 40% 0 3% 3%;  
     
 }
 .contenedorHeader h1 {
@@ -42,6 +44,8 @@ body{
 
 .contenedorHeader p{
     margin-top: 30%;
+    color: antiquewhite;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 .contenedorMain{
@@ -77,9 +81,16 @@ body{
     border-radius: 50px;
     background-color: #CDFF06;
     font-weight: 700;
+    
 }
-  
+
+.btn-InicioSesion:hover {
+    background-color: #3f338c;
+    color: aliceblue;
+    
+}
 .recuperarContraseña{
     text-decoration: none;
     margin-top: 5%;
+    color: aliceblue;
 }
