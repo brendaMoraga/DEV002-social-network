@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "/firebase/app";
+import { getAnalytics } from "/firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,17 +25,21 @@ const analytics = getAnalytics(app);
 
 // myFunction();
 
+
+//AQUI PARTE LO DE LA SPA 
+
 /* eslint-disable import/no-cycle */
-import { Home } from './componentes/home';
-import { Register } from './componentes/register';
-import { Login } from './componentes/login';
+import { Home } from './components/Home.js';
+import { Register } from './components/Register.js';
+import { Login } from './components/Login.js';
+
 
 const rootDiv = document.getElementById('root');
 
 const routes = {
-    '/': Home,
-    '/register': Register,
-    '/login': Login,
+    '/':Home,
+    '/':Register,
+    '/':Login,
 };
 
 export const onNavigate = (pathname) => {
