@@ -2,15 +2,26 @@
 import { onNavigate } from '../main.js';
 
 export const Login = () => {
-    const HomeDiv = document.createElement('div');
-    HomeDiv.textContent = 'Bienvenida al Login';
-    const buttonHome = document.createElement('button');
+    const div = document.createElement('div');
+    const title = document.createElement('h2');
+    const button = document.createElement('button');
+    const buttonBack = document.createElement('button');
+    const inputEmail = document.createElement('input');
+    const inputPass = document.createElement('input');
 
-    buttonHome.textContent = 'Regresar al Home';
+    button.textContent = 'entrar';
+    buttonBack.textContent = 'Regresa';
+    title.textContent = 'Inicia Sesion';
 
-    buttonHome.addEventListener('click', () => onNavigate('/'));
+    button.addEventListener('click', () => {
+        console.log(inputEmail.value);
+        onNavigate('/wall');
+    });
+    buttonBack.addEventListener('click', () => {
+        onNavigate('/');
+    });
 
-    HomeDiv.appendChild(buttonHome);
+    div.append(title, inputEmail, inputPass, button, buttonBack);
 
-    return HomeDiv;
+    return div;
 };

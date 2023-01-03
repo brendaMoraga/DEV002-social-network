@@ -9,32 +9,27 @@ import { Login } from './components/Login.js';
 const rootDiv = document.getElementById('root');
 
 const routes = {
-    '/':Home,
-    '/':Register,
-    '/':Login,
+    '/': Home,
+    '/login': Login,
+    '/register': Register,
 };
 
-export const onNavigate = (pathname) => {
+export const onNavigate = (pathname) => { 
     window.history.pushState(
         {},
         pathname,
         window.location.origin + pathname,
     );
 
-    while (rootDiv.firstChild) {
-        rootDiv.removeChild(rootDiv.firstChild);
-    }
-
-    rootDiv.appendChild(routes[pathname]());
+    root.removeChild(root.firstChild);
+    root.appendChild(routes[pathname]());
 };
 
 const component = routes[window.location.pathname];
-
+//con esto puedo hacer back a la web
 window.onpopstate = () => {
-    while (rootDiv.firstChild) {
-        rootDiv.removeChild(rootDiv.firstChild);
-    }
-    rootDiv.appendChild(routes[window.location.pathname]());
+    root.removeChild(root.firstChild);
+    root.append(component());
 };
 
-rootDiv.appendChild(component());
+root.appendChild(component());
