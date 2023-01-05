@@ -1,6 +1,16 @@
-// aqui exportaras las funciones que necesites
+import { createUser } from "./firebase.js";
+const form = document.getElementById('inicioSesion');
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+form.addEventListener ('submit',(e)=>{
+ 
+  e.preventDefault();
+  const email= document.getElementById('correo').value;
+  const password= document.getElementById('contraseña').value;
+  createUser(email,password);
+  console.log(email,password);
+  form.reset();
+ 
+});
+
+
+
