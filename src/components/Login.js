@@ -9,6 +9,8 @@ export const Login = () => {
     const inputEmail = document.createElement('input');
     const inputPass = document.createElement('input');
 
+    
+
     button.textContent = 'entrar';
     buttonBack.textContent = 'Regresa';
     title.textContent = 'Inicia Sesion';
