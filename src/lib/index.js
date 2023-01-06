@@ -1,5 +1,5 @@
 import { createUser } from "./firebase.js";
-const form = document.getElementById('inicioSesion');
+const form = document.getElementById('registrarUsuario');
 
 form.addEventListener ('submit',(e)=>{
  
