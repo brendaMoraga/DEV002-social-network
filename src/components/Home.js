@@ -24,7 +24,7 @@ export const Home = () => {
         <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
           <div class='contenedorLinkRegis'>
             <p>¿No tienes cuenta?</p> 
-            <a href="">REGISTRATE</a>
+            <a id="registrarse " href="">REGISTRATE</a>
           </div>
     </div>
 </div>`
@@ -33,19 +33,14 @@ export const Home = () => {
     
 return HomeDiv;   
 };
+const linkRegistarse = document.getElementById('registrarse');
 
-// const formulario = document.createElement('button');
-    // buttonRegister.textContent = 'Iniciar sesión con Google';
-    // buttonLogin.textContent = 'Inicia sesión';
+  linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+    buttonLogin.addEventListener('click', () => onNavigate('/login'));
 
-  // buttonRegister.addEventListener('click', () => onNavigate('/register'));
-    // buttonLogin.addEventListener('click', () => onNavigate('/login'));
 
-//     <!-- <form id="inicioSesion" >
-//     <input type="email" id="correo" placeholder="Ingresa tu correo electorico" autocomplete="off">
-//     <input type="password" id="contraseña" placeholder="Ingresa tu contraseña">
-//     <input type="submit" id="enviar" value="Enviar">
-//   </form> --></input>
+    const formulario = document.createElement('button');
+    buttonRegister.textContent = 'Iniciar sesión con Google';
+    buttonLogin.textContent = 'Inicia sesión';
 
-// //   <button type="submit" class="btn-InicioSesion">Iniciar Sesión</button>
-// {/* <form id="inicioSesion"></form> */}
+
