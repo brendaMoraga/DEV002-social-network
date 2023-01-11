@@ -4,7 +4,7 @@ import { onNavigate } from '../main.js';
 export const Register = () => {
     const divRegis = document.createElement('div');
     divRegis.classList.add('contenedorRegis');
-    divRegis.innerHTML = `<div class="contendorRegis">
+    divRegis.innerHTML = `<div class="contendorRegistro">
     <form id="RegistrarUsiario" >
     <input type="text" id="nombreUs" placeholder="Crea tu nombre de usuario" autocomplete="off">
      <input type="email" id="correo" placeholder="Ingresa tu correo electorico" autocomplete="off">
@@ -21,7 +21,7 @@ export const Register = () => {
     <hr />
     </div>`
 
-
+//usar queryselector - primero cargar comillas y luego funciones de firebase 
 
 
 
@@ -31,6 +31,8 @@ button.addEventListener('click', () => {
 buttonBack.addEventListener('click', () => {
     onNavigate('/');
 });
+
+divRegis.querySelector
 
 // div.append(title, inputEmail, inputPass, button, buttonBack);
 

@@ -7,8 +7,8 @@ export const Home = () => {
     // const formulario = document.createElement('button');
     // buttonRegister.textContent = 'Iniciar sesión con Google';
     // buttonLogin.textContent = 'Inicia sesión';
-    HomeDiv.innerHTML =
-     `<header class="contenedorHeader">
+    HomeDiv.innerHTML = /*html*/ `
+    <header class="contenedorHeader">
         <h1>View my Music</h1>
         <p>TODOS TUS CONCIERTOS Y MÚSICA <br> EN UN SÓLO LUGAR</p>
       </header> 
@@ -29,18 +29,19 @@ export const Home = () => {
     </div>
 </div>`
 
-
+// usar onnavigate para hacer funcionar el boton usar query para llamar 
     
 return HomeDiv;   
 };
-const linkRegistarse = document.getElementById('registrarse');
 
-  linkRegistarse.addEventListener('click', () => onNavigate('/register'));
-    buttonLogin.addEventListener('click', () => onNavigate('/login'));
+// const linkRegistarse = document.getElementById('registrarse');
+
+  // linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+  //   buttonLogin.addEventListener('click', () => onNavigate('/login'));
 
 
-    const formulario = document.createElement('button');
-    buttonRegister.textContent = 'Iniciar sesión con Google';
-    buttonLogin.textContent = 'Inicia sesión';
+    // const formulario = document.createElement('button');
+    // buttonRegister.textContent = 'Iniciar sesión con Google';
+    // buttonLogin.textContent = 'Inicia sesión';
 
 
