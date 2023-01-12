@@ -2,9 +2,9 @@
 import { onNavigate } from '../main.js';
 
 export const Home = () => {
-    const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
-    HomeDiv.classList.add('ContainerPadre');
-    HomeDiv.innerHTML = /*html*/ `
+  const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
+  HomeDiv.classList.add('ContainerPadre');
+  HomeDiv.innerHTML = /*html*/ `
     <header class="contenedorHeader">
     <h1>View my Music</h1>
     <p>TODOS TUS CONCIERTOS Y MÚSICA <br> EN UN SÓLO LUGAR</p>
@@ -21,15 +21,25 @@ export const Home = () => {
     <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
       <div class='contenedorLinkRegis'>
         <p>¿No tienes cuenta?</p> 
-        <a id="registrarse " href="">REGISTRATE</a>
+        <!-- <a id="registrarse " href="/register">REGISTRATE</a> -->
+        <button id="registrarse"  > REGISTRATE </button>
+
       </div>
 </div>
 </div>
 `
+  const buttonRegister = button.querySelector('#registrarse');
+  buttonRegister.addEventListener('click', () => onNavigate('/register'));
 
-    
-return HomeDiv;   
+  // buttonLogin.addEventListener('click', () => onNavigate('/login'));
+
+  // const linkRegistarse = document.getElementById('registrarse');
+
+  //  linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+
+  return HomeDiv;
 };
+
 
 // const linkRegistarse = document.getElementById('registrarse');
 
