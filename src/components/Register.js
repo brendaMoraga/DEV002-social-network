@@ -1,11 +1,13 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+import { createUser } from '../lib/firebase.js';
 
 export const Register = () => {
     const divRegis = document.createElement('div');
     divRegis.classList.add('contenedorRegis');
-    divRegis.innerHTML = `<div class="contendorRegistro">
-    <form id="RegistrarUsiario" >
+    divRegis.innerHTML = /*html*/`
+    <div class="contendorRegistro">
+    <form id="RegistrarUsuario" >
     <input type="text" id="nombreUs" placeholder="Crea tu nombre de usuario" autocomplete="off">
      <input type="email" id="correo" placeholder="Ingresa tu correo electorico" autocomplete="off">
      <input type="password" id="contraseña" placeholder="Crea tu contraseña">
@@ -23,6 +25,19 @@ export const Register = () => {
 
 //usar queryselector - primero cargar comillas y luego funciones de firebase 
 
+
+const formReg =form.querySelector('#RegistrarUsuario');
+
+formReg.addEventListener ('submit',(e)=>{
+ 
+  e.preventDefault();
+  const email= form.querySelector('#correo').value;
+  const password= form.querySelector('#contraseña').value;
+  createUser(email,password);
+  console.log(email,password);
+  form.reset();
+ 
+});
 
 
 button.addEventListener('click', () => {
