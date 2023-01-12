@@ -2,10 +2,9 @@
 import { onNavigate } from '../main.js';
 
 export const Home = () => {
-    const HomeDiv = document.createElement('main');
-    HomeDiv.classList.add ('containerPadre');
-    HomeDiv.innerHTML= /*html*/ `
-
+    const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
+    HomeDiv.classList.add('ContainerPadre');
+    HomeDiv.innerHTML = /*html*/ `
     <header class="contenedorHeader">
     <h1>View my Music</h1>
     <p>TODOS TUS CONCIERTOS Y MÚSICA <br> EN UN SÓLO LUGAR</p>
@@ -29,5 +28,19 @@ export const Home = () => {
 `
 
     
-    return HomeDiv;
+return HomeDiv;   
 };
+
+// const linkRegistarse = document.getElementById('registrarse');
+
+  // linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+  //   buttonLogin.addEventListener('click', () => onNavigate('/login'));
+
+
+    // const formulario = document.createElement('button');
+    // buttonRegister.textContent = 'Iniciar sesión con Google';
+    // buttonLogin.textContent = 'Inicia sesión';
+
+// const formulario = document.createElement('button');
+    // buttonRegister.textContent = 'Iniciar sesión con Google';
+    // buttonLogin.textContent = 'Inicia sesión';
