@@ -7,6 +7,7 @@ import { Login } from './components/Login.js';
 import { Wall } from './components/Wall.js';
 
 
+
 const root = document.getElementById('root');
 
 const routes = {
@@ -36,5 +37,6 @@ window.onpopstate = () => {
 
 root.appendChild(component());
 
+console.log(component)
 
 
