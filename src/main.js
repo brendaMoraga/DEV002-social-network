@@ -14,7 +14,10 @@ const routes = {
     '/login': Login,
     '/register': Register,
     '/wall': Wall,
-};
+    };
+
+    //  estas funciones  , sirve para limpiar el div root del html y alimentrlo con los routes 
+// de las diferentes sesiones de la app (el pathnamme son los componotenes de la constante routes      ) 
 
 export const onNavigate = (pathname) => { 
     window.history.pushState(
@@ -26,6 +29,7 @@ export const onNavigate = (pathname) => {
     root.removeChild(root.firstChild);
     root.appendChild(routes[pathname]());
 };
+
 
 const component = routes[window.location.pathname];
 //con esto puedo hacer back a la web
