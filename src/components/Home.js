@@ -4,9 +4,6 @@ import { onNavigate } from '../main.js';
 export const Home = () => {
     const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
     HomeDiv.classList.add('ContainerPadre');
-    // const formulario = document.createElement('button');
-    // buttonRegister.textContent = 'Iniciar sesión con Google';
-    // buttonLogin.textContent = 'Inicia sesión';
     HomeDiv.innerHTML = /*html*/ `
     <header class="contenedorHeader">
         <h1>View my Music</h1>
@@ -44,4 +41,6 @@ return HomeDiv;
     // buttonRegister.textContent = 'Iniciar sesión con Google';
     // buttonLogin.textContent = 'Inicia sesión';
 
-
+// const formulario = document.createElement('button');
+    // buttonRegister.textContent = 'Iniciar sesión con Google';
+    // buttonLogin.textContent = 'Inicia sesión';
