@@ -2,38 +2,32 @@
 import { onNavigate } from '../main.js';
 
 export const Home = () => {
-    const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
-    HomeDiv.classList.add('ContainerPadre');
-    // const formulario = document.createElement('button');
-    // buttonRegister.textContent = 'Iniciar sesión con Google';
-    // buttonLogin.textContent = 'Inicia sesión';
-    HomeDiv.innerHTML =
-     `<header class="contenedorHeader">
-        <h1>View my Music</h1>
-        <p>TODOS TUS CONCIERTOS Y MÚSICA <br> EN UN SÓLO LUGAR</p>
-      </header> 
-     <div class="contendorInicio">
-        <form id="form-InicioSesion" >
-            <input type="email" placeholder="Ingresa correo" class="inputInicio" id='correoUsuario'>
-            <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
-            <button type="btn" class="btn-InicioSesion" id='btn-Ingresar'>Iniciar Sesión</button>
-            <a href="" class="recuperarContraseña">olvide mi contraseña</a>
-          </form> 
-          </div>
-        <div class="contenedorInicioGoogle">
-        <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
-          <div class='contenedorLinkRegis'>
-            <p>¿No tienes cuenta?</p> 
-            <a href="">REGISTRATE</a>
-          </div>
-    </div>
-</div>
-</main>`
+    const HomeDiv = document.createElement('main');
+    HomeDiv.classList.add ('containerPadre');
+    HomeDiv.innerHTML= /*html*/ `
 
+    <header class="contenedorHeader">
+    <h1>View my Music</h1>
+    <p>TODOS TUS CONCIERTOS Y MÚSICA <br> EN UN SÓLO LUGAR</p>
+  </header> 
+ <div class="contendorInicio">
+    <form id="form-InicioSesion" >
+        <input type="email" placeholder="Ingresa correo" class="inputInicio" id='correoUsuario'>
+        <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
+        <button type="btn" class="btn-InicioSesion" id='btn-Ingresar'>Iniciar Sesión</button>
+        <a href="" class="recuperarContraseña">olvide mi contraseña</a>
+      </form> 
+      </div>
+    <div class="contenedorInicioGoogle">
+    <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
+      <div class='contenedorLinkRegis'>
+        <p>¿No tienes cuenta?</p> 
+        <a id="registrarse " href="">REGISTRATE</a>
+      </div>
+</div>
+</div>
+`
 
     
-return HomeDiv;   
+    return HomeDiv;
 };
-
-  // buttonRegister.addEventListener('click', () => onNavigate('/register'));
-    // buttonLogin.addEventListener('click', () => onNavigate('/login'));
