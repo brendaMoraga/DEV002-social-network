@@ -3,9 +3,9 @@ import { onNavigate } from '../main.js';
 import { createUser } from '../lib/firebase.js';
 
 export const Register = () => {
-    const divRegis = document.createElement('div');
-    divRegis.classList.add('contenedorRegis');
-    divRegis.innerHTML = /*html*/`
+  const divRegis = document.createElement('div');
+  divRegis.classList.add('contenedorRegis');
+  divRegis.innerHTML = /*html*/`
     <div class="contendorRegistro">
     <form id="RegistrarUsuario" >
     <input type="text" id="nombreUs" placeholder="Crea tu nombre de usuario" autocomplete="off">
@@ -23,38 +23,44 @@ export const Register = () => {
     <hr />
     </div>`
 
-//usar queryselector - primero cargar comillas y luego funciones de firebase 
+  //usar queryselector - primero cargar comillas y luego funciones de firebase 
 
 
+  return divRegis;
 
+};
 
-button.addEventListener('click', () => {
-    onNavigate('/login');
+window.addEventListener('load', function () {
+  const linkRegistarse = document.getElementById('registrarse');
+  if (linkRegistarse) {
+    linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+  }
 });
-buttonBack.addEventListener('click', () => {
-    onNavigate('/');
-});
 
-divRegis.querySelector
+
+
+
+// button.addEventListener('click', () => {
+//   onNavigate('/login');
+// });
+// buttonBack.addEventListener('click', () => {
+//   onNavigate('/');
+// });
+
+// divRegis.querySelector
 
 // div.append(title, inputEmail, inputPass, button, buttonBack);
 
 
-const formReg =form.querySelector('#RegistrarUsuario');
+// const formReg =form.querySelector('#RegistrarUsuario');
 
-formReg.addEventListener ('submit',(e)=>{
- 
-  e.preventDefault();
-  const email= form.querySelector('#correo').value;
-  const password= form.querySelector('#contraseña').value;
-  createUser(email,password);
-  console.log(email,password);
-  form.reset();
- 
-});
+// formReg.addEventListener ('submit',(e)=>{
 
-return divRegis;
+// e.preventDefault();
+// const email= form.querySelector('#correo').value;
+// const password= form.querySelector('#contraseña').value;
+// createUser(email,password);
+// console.log(email,password);
+// form.reset();
 
-
-
-};
+// });
