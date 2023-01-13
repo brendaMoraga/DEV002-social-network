@@ -21,6 +21,7 @@ const routes = {
 // de las diferentes sesiones de la app (el pathnamme son los componotenes de la constante routes      ) 
 
 export const onNavigate = (pathname) => { 
+    console.log('hola');
     window.history.pushState(
         {},
         pathname,
