@@ -26,18 +26,6 @@ export const Register = () => {
 //usar queryselector - primero cargar comillas y luego funciones de firebase 
 
 
-const formReg =form.querySelector('#RegistrarUsuario');
-
-formReg.addEventListener ('submit',(e)=>{
- 
-  e.preventDefault();
-  const email= form.querySelector('#correo').value;
-  const password= form.querySelector('#contraseña').value;
-  createUser(email,password);
-  console.log(email,password);
-  form.reset();
- 
-});
 
 
 button.addEventListener('click', () => {
@@ -51,5 +39,22 @@ divRegis.querySelector
 
 // div.append(title, inputEmail, inputPass, button, buttonBack);
 
+
+const formReg =form.querySelector('#RegistrarUsuario');
+
+formReg.addEventListener ('submit',(e)=>{
+ 
+  e.preventDefault();
+  const email= form.querySelector('#correo').value;
+  const password= form.querySelector('#contraseña').value;
+  createUser(email,password);
+  console.log(email,password);
+  form.reset();
+ 
+});
+
 return divRegis;
+
+
+
 };

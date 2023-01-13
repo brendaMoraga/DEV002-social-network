@@ -12,10 +12,17 @@ const root = document.getElementById('root');
 
 const routes = {
     '/': Home,
-    '/login': Login,
-    '/register': Register,
-    '/wall': Wall,
+    '/Login': Login,
+    '/Register': Register,
+    '/Wall': Wall,
 };
+
+
+// el método history.pushState () que toma tres parámetros,
+// es decir, estado, título y la ruta para empujar y empujar
+// la ruta actual en objeto de historial para que también
+// podamos navegar a través del botón de avance y retroceso 
+// window.onload = nombre_de_la_funcion; 
 
 export const onNavigate = (pathname) => { 
     window.history.pushState(
