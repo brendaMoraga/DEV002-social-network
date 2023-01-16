@@ -7,7 +7,7 @@ export const Register = () => {
   divRegis.classList.add('contenedorRegis');
   divRegis.innerHTML = /*html*/`
     <div class="contendorRegistro">
-    <form id="RegistrarUsuario" >
+    <form id="registrarUsuario" >
     <input type="text" id="nombreUs" placeholder="Crea tu nombre de usuario" autocomplete="off">
      <input type="email" id="correo" placeholder="Ingresa tu correo electorico" autocomplete="off">
      <input type="password" id="contraseña" placeholder="Crea tu contraseña">
@@ -17,7 +17,7 @@ export const Register = () => {
       <option> Autor/Compositor</option>
       <option> Fans/Espectador</option>
     </select>
-    <button type="submit" id="enviar" class="btn-InicioSesion">Registrarse</button>
+    <input type="submit" id="enviar" class="btn-InicioSesion" value='REGISTRARSE'>
     </form>
     <a href="" class="recuperarContraseña">Regresar</a>
     <hr />
@@ -52,15 +52,18 @@ window.addEventListener('load', function () {
 // div.append(title, inputEmail, inputPass, button, buttonBack);
 
 
-// const formReg =form.querySelector('#RegistrarUsuario');
 
-// formReg.addEventListener ('submit',(e)=>{
+window.addEventListener('load', function () {
+  
+  const formReg = document.querySelector('#registrarUsuario');
 
-// e.preventDefault();
-// const email= form.querySelector('#correo').value;
-// const password= form.querySelector('#contraseña').value;
-// createUser(email,password);
-// console.log(email,password);
-// form.reset();
+  formReg.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.querySelector('#correo').value;
+    const password = document.querySelector('#contraseña').value;
+    console.log(email, password);
+    createUser(email, password);
+    formReg.reset();
 
-// });
+  });
+});
