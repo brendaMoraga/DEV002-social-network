@@ -21,9 +21,7 @@ export const Home = () => {
     <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
       <div class='contenedorLinkRegis'>
         <p>¿No tienes cuenta?</p> 
-        <!-- <a id="registrarse " href="/register">REGISTRATE</a> -->
-        <button id="registrarse"  > REGISTRATE </button>
-
+        <a id="registrarse " href="">REGISTRATE</a>
       </div>
 </div>
 </div>
@@ -41,6 +39,13 @@ export const Home = () => {
 };
 
 
+window.addEventListener('load', function() {
+
+  const linkRegistarse = document.getElementById('registrarse');
+  if(linkRegistarse){
+    linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+  }
+ });
 // const linkRegistarse = document.getElementById('registrarse');
 
   // linkRegistarse.addEventListener('click', () => onNavigate('/register'));

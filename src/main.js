@@ -15,9 +15,20 @@ const routes = {
     '/login': Login,
     '/register': Register,
     '/wall': Wall,
-};
+    };
+
+    //  estas funciones  , sirve para limpiar el div root del html y alimentrlo con los routes 
+// de las diferentes sesiones de la app (el pathnamme son los componotenes de la constante routes      ) 
+
+
+// el método history.pushState () que toma tres parámetros,
+// es decir, estado, título y la ruta para empujar y empujar
+// la ruta actual en objeto de historial para que también
+// podamos navegar a través del botón de avance y retroceso 
+// window.onload = nombre_de_la_funcion; 
 
 export const onNavigate = (pathname) => { 
+    console.log('hola');
     window.history.pushState(
         {},
         pathname,
@@ -28,6 +39,7 @@ export const onNavigate = (pathname) => {
     root.appendChild(routes[pathname]());
 };
 
+
 const component = routes[window.location.pathname];
 //con esto puedo hacer back a la web
 window.onpopstate = () => {
@@ -37,6 +49,6 @@ window.onpopstate = () => {
 
 root.appendChild(component());
 
-console.log(component)
+
 
 
