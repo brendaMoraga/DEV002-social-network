@@ -52,15 +52,15 @@ window.addEventListener('load', function () {
 // div.append(title, inputEmail, inputPass, button, buttonBack);
 
 
-// const formReg =form.querySelector('#RegistrarUsuario');
+const formReg =form.querySelector('#RegistrarUsuario');
 
-// formReg.addEventListener ('submit',(e)=>{
+formReg.addEventListener ('submit',(e)=>{
 
-// e.preventDefault();
-// const email= form.querySelector('#correo').value;
-// const password= form.querySelector('#contraseña').value;
-// createUser(email,password);
-// console.log(email,password);
-// form.reset();
+e.preventDefault();
+const email= form.querySelector('#correo').value;
+const password= form.querySelector('#contraseña').value;
+createUser(email,password);
+console.log(email,password);
+form.reset();
 
-// });
+});
