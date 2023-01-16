@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+import { Wall } from './Wall.js';
 
 export const Home = () => {
   const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
@@ -13,7 +14,7 @@ export const Home = () => {
     <form id="form-InicioSesion" >
         <input type="email" placeholder="Ingresa correo" class="inputInicio" id='correoUsuario'>
         <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
-        <button type="btn" class="btn-InicioSesion" id='btn-Ingresar'>Iniciar Sesión</button>
+        <button type="btn" class="btn-InicioSesion" id='btnIngresar'>Iniciar Sesión</button>
         <a href="" class="recuperarContraseña">olvide mi contraseña</a>
       </form> 
       </div>
@@ -21,35 +22,46 @@ export const Home = () => {
     <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
       <div class='contenedorLinkRegis'>
         <p>¿No tienes cuenta?</p> 
-        <a id="registrarse " href="">REGISTRATE</a>
+        // <button id="registrarse" class="btnLink" >REGISTRATE</a>
+        <a id="registrarse" href="">REGISTRATE</a>
       </div>
 </div>
 </div>
 `
-  const buttonRegister = button.querySelector('#registrarse');
-  buttonRegister.addEventListener('click', () => onNavigate('/register'));
-
-  // buttonLogin.addEventListener('click', () => onNavigate('/login'));
-
-  // const linkRegistarse = document.getElementById('registrarse');
-
-  //  linkRegistarse.addEventListener('click', () => onNavigate('/register'));
 
   return HomeDiv;
 };
 
+//el btn deberia estar impreso en el dom primero antes de llamarlo, por esto aparece un null al listener 
+//deberiamos probar set time out para que carge primero la web antes de llamar al id en este caso usamos load
 
-window.addEventListener('load', function() {
-
+window.addEventListener('load', function () {
   const linkRegistarse = document.getElementById('registrarse');
-  if(linkRegistarse){
+  if (linkRegistarse) {
     linkRegistarse.addEventListener('click', () => onNavigate('/register'));
   }
- });
+});
+
+window.addEventListener('load', function () {
+  const btnInicioSes = document.getElementById('btnIngresar');
+  if (btnInicioSes) {
+    btnInicioSes.addEventListener('click', () => onNavigate('/wall'));
+  }
+});
+
+
+
+
 // const linkRegistarse = document.getElementById('registrarse');
 
-  // linkRegistarse.addEventListener('click', () => onNavigate('/register'));
-  //   buttonLogin.addEventListener('click', () => onNavigate('/login'));
+// const btnInicioSes = document.getElementById('btnIngresar');
+// btnInicioSes.addEventListener('click', () => onNavigate('/Wall'));
+
+// const btnRegis = document.getElementById('registrarse');
+// btnRegis.addEventListener('click', () => onNavigate('/Register'));
+
+// const btnGoogle = document.getElementById('btn-inicioGoogle ')
+// btnGoogle.addEventListener('click', () => onNavigate('/Login'));
 
 
     // const formulario = document.createElement('button');
