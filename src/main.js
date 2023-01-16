@@ -49,6 +49,6 @@ window.onpopstate = () => {
 
 root.appendChild(component());
 
-console.log(component)
+
 
 
