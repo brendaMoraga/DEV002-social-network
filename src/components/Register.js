@@ -37,21 +37,7 @@ window.addEventListener('load', function () {
   }
 });
 
-
-
-
-// button.addEventListener('click', () => {
-//   onNavigate('/login');
-// });
-// buttonBack.addEventListener('click', () => {
-//   onNavigate('/');
-// });
-
-// divRegis.querySelector
-
-// div.append(title, inputEmail, inputPass, button, buttonBack);
-
-
+//
 
 window.addEventListener('load', function () {
   

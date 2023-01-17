@@ -25,7 +25,7 @@ const routes = {
 // es decir, estado, título y la ruta para empujar y empujar
 // la ruta actual en objeto de historial para que también
 // podamos navegar a través del botón de avance y retroceso 
-// window.onload = nombre_de_la_funcion; 
+// window.onload = nombre_de_la_funcion; para que cargue la página antes de darle una orden
 
 export const onNavigate = (pathname) => { 
     console.log('hola');
