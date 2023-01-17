@@ -1,7 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+
+// provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,6 +31,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
 
+// REGISTRANDO UN USURARIO CON FIRE BASE
+
 export const createUser = (email, password) => {
 
     createUserWithEmailAndPassword(auth, email, password)
@@ -39,4 +45,36 @@ export const createUser = (email, password) => {
             const errorMessage = error.message;
             console.log(errorCode, errorMessage)
         })
-}
+};
+
+
+
+// INICIAR SESION CON GOOGLE 
+
+
+
+export const authGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            console.log(user, token);
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            console.log(errorCode, errorMessage, email, credential);
+            // ...
+        });
+
+};

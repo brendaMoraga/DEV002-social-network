@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 import { Wall } from './Wall.js';
+import { authGoogle } from '../lib/firebase.js';
+
+
 
 export const Home = () => {
   const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
@@ -19,7 +22,7 @@ export const Home = () => {
       </form> 
       </div>
     <div class="contenedorInicioGoogle">
-    <button type="submit" id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
+    <button id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
       <div class='contenedorLinkRegis'>
         <p>¿No tienes cuenta?</p> 
         // <button id="registrarse" class="btnLink" >REGISTRATE</a>
@@ -48,6 +51,25 @@ window.addEventListener('load', function () {
     btnInicioSes.addEventListener('click', () => onNavigate('/wall'));
   }
 });
+
+
+// INICIO SESION CON GOOGLE
+
+window.addEventListener('load', function () {
+
+  const emailGoogle = document.querySelector('#btn-inicioGoogle');
+  console.log(emailGoogle);
+  emailGoogle.addEventListener('click', () => {
+    authGoogle();
+
+
+  });
+});
+
+// const formReg = document.querySelector('#btn-inicioGoogle');
+
+
+
 
 
 
