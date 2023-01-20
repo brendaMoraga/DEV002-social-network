@@ -15,9 +15,9 @@ const routes = {
     '/login': Login,
     '/register': Register,
     '/wall': Wall,
-    };
+};
 
-    //  estas funciones  , sirve para limpiar el div root del html y alimentrlo con los routes 
+//  estas funciones  , sirve para limpiar el div root del html y alimentrlo con los routes 
 // de las diferentes sesiones de la app (el pathnamme son los componotenes de la constante routes      ) 
 
 
@@ -27,12 +27,12 @@ const routes = {
 // podamos navegar a través del botón de avance y retroceso 
 // window.onload = nombre_de_la_funcion; para que cargue la página antes de darle una orden
 
-export const onNavigate = (pathname) => { 
-    console.log('hola');
-    window.history.pushState(
-        {},
-        pathname,
-        window.location.origin + pathname,
+export const onNavigate = (pathname) => {
+
+  window.history.pushState(
+  {},
+  pathname,
+  window.location.origin + pathname,
     );
 
     root.removeChild(root.firstChild);

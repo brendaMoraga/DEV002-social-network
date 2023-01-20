@@ -93,3 +93,8 @@ window.addEventListener('load', function () {
 // const formulario = document.createElement('button');
     // buttonRegister.textContent = 'Iniciar sesión con Google';
     // buttonLogin.textContent = 'Inicia sesión';
+
+
+
+
+
