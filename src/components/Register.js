@@ -48,7 +48,7 @@ window.addEventListener('load', function () {
 window.addEventListener('load', function () {
 
   const formReg = document.querySelector('#registrarUsuario');
-
+  if(formReg){
   formReg.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.querySelector('#correo').value;
@@ -58,4 +58,5 @@ window.addEventListener('load', function () {
     formReg.reset();
 
   });
+}
 });
