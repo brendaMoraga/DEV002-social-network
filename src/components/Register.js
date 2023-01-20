@@ -23,7 +23,7 @@ export const Register = () => {
        value="2018-07-22"
        min="2018-01-01" max="2018-12-31">
        </div>
-    <input type="submit" id="enviar" class="btn-InicioSesion" value='REGISTRARSE'>
+    <input type="submit" id="enviar" class="btn-Registrarse" value='REGISTRARSE'>
     </form>
     <a href="" class="recuperarContraseña">Regresar</a>
     <hr />
