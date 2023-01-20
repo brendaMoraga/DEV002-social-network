@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
 // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -28,7 +28,21 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
 
-//INICIO SESION
+//INICIO SESION USUARIOS EXISTENTEs:
+export const authSing = (email,password) => {
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode,errorMessage)
+  });
+}
+//Observador
 export const authSesion = () =>{
 onAuthStateChanged(auth, (user) => {
   if (user) {
