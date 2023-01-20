@@ -2,6 +2,7 @@
 import { onNavigate } from '../main.js';
 import { Wall } from './Wall.js';
 import { authGoogle } from '../lib/firebase.js';
+import {authSesion} from '../lib/firebase.js';
 
 
 
@@ -25,7 +26,7 @@ export const Home = () => {
     <button id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
       <div class='contenedorLinkRegis'>
         <p>¿No tienes cuenta?</p> 
-        // <button id="registrarse" class="btnLink" >REGISTRATE</a>
+        
         <a id="registrarse" href="">REGISTRATE</a>
       </div>
 </div>
@@ -52,13 +53,27 @@ window.addEventListener('load', function () {
   }
 });
 
+//INICIO SESION
+window.addEventListener('load', function () {
+
+  const formSesion = document.querySelector('#form-InicioSesion');
+
+  formSesion.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.querySelector('#correoUsuario').value;
+    const password = document.querySelector('#contraseñaUsuario').value;
+    console.log(email, password);
+    authSesion(email, password);
+    formSesion.reset();
+
+  });
+});
 
 // INICIO SESION CON GOOGLE
 
 window.addEventListener('load', function () {
 
   const emailGoogle = document.querySelector('#btn-inicioGoogle');
-  console.log(emailGoogle);
   emailGoogle.addEventListener('click', () => {
     authGoogle();
 
