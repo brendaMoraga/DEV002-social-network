@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
 // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -23,15 +23,26 @@ const firebaseConfig = {
 // myFunction();
 
 
-
-
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
 
-// REGISTRANDO UN USURARIO CON FIRE BASE
+//INICIO SESION
+export const authSesion = () =>{
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
+};
+//REGISTRANDO UN USURARIO CON FIRE BASE
 
 export const createUser = (email, password) => {
 
@@ -63,7 +74,7 @@ export const authGoogle = () => {
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
-            console.log(user, token);
+            // console.log(user, token);
             // ...
         }).catch((error) => {
             // Handle Errors here.
@@ -78,3 +89,4 @@ export const authGoogle = () => {
         });
 
 };
+
