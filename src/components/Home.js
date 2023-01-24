@@ -1,8 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { Wall } from './Wall.js';
+//import { Wall } from './Wall.js';
 import { authGoogle } from '../lib/firebase.js';
-import {authSesion} from '../lib/firebase.js';
+//import {authSesion} from '../lib/firebase.js';
+import{authSing} from '../lib/firebase.js';
 
 
 
@@ -18,7 +19,7 @@ export const Home = () => {
     <form id="form-InicioSesion" >
         <input type="email" placeholder="Ingresa correo" class="inputInicio" id='correoUsuario'>
         <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
-        <button type="btn" class="btn-InicioSesion" id='btnIngresar'>Iniciar Sesión</button>
+        <input type="submit" class="btn-InicioSesion" id='btnIngresar' value='Iniciar Sesión'>
         <a href="" class="recuperarContraseña">olvide mi contraseña</a>
       </form> 
       </div>
@@ -46,27 +47,28 @@ window.addEventListener('load', function () {
   }
 });
 
-window.addEventListener('load', function () {
-  const btnInicioSes = document.getElementById('btnIngresar');
-  if (btnInicioSes) {
-    btnInicioSes.addEventListener('click', () => onNavigate('/wall'));
-  }
-});
+
 
 //INICIO SESION
 window.addEventListener('load', function () {
 
   const formSesion = document.querySelector('#form-InicioSesion');
+  const btnInicioSes = document.getElementById('btnIngresar');
+  // const userValid= (valid);
+  if(btnInicioSes){
+    formSesion.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.querySelector('#correoUsuario').value;
+      const password = document.querySelector('#contraseñaUsuario').value;
+      console.log(email, password);
+      authSing(email, password);
+      formSesion.reset(); 
+           
+     onNavigate('/wall');         
 
-  formSesion.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.querySelector('#correoUsuario').value;
-    const password = document.querySelector('#contraseñaUsuario').value;
-    console.log(email, password);
-    authSesion(email, password);
-    formSesion.reset();
-
-  });
+    });
+  }
+ 
 });
 
 // INICIO SESION CON GOOGLE
@@ -74,9 +76,11 @@ window.addEventListener('load', function () {
 window.addEventListener('load', function () {
 
   const emailGoogle = document.querySelector('#btn-inicioGoogle');
+  if(emailGoogle){
   emailGoogle.addEventListener('click', () => {
-  authGoogle();
+    authGoogle();
   });
+}
 });
 
 window.addEventListener('load', function () {
