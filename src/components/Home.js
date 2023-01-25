@@ -18,7 +18,9 @@ export const Home = () => {
  <div class="contendorInicio">
     <form id="form-InicioSesion" >
         <input type="email" placeholder="Ingresa correo" class="inputInicio" id='correoUsuario'>
+        <p id='errorCorreo'> </p>
         <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
+        <p id='errorContraseña'> </p>
         <input type="submit" class="btn-InicioSesion" id='btnIngresar' value='Iniciar Sesión'>
         <a href="" class="recuperarContraseña">olvide mi contraseña</a>
       </form> 
@@ -54,22 +56,39 @@ window.addEventListener('load', function () {
 
   const formSesion = document.querySelector('#form-InicioSesion');
   const btnInicioSes = document.getElementById('btnIngresar');
-  // const userValid= (valid);
-  if(btnInicioSes){
-    formSesion.addEventListener('submit', (e) => {
+  
+  //  if(formSesion){
+    formSesion.addEventListener('submit', async(e) => {
       e.preventDefault();
       const email = document.querySelector('#correoUsuario').value;
       const password = document.querySelector('#contraseñaUsuario').value;
       console.log(email, password);
-      authSing(email, password);
-      formSesion.reset(); 
-           
-     onNavigate('/wall');         
-
+      const inicirSesi = await authSing(email, password);
+      console.log(inicirSesi);
+      if(inicirSesi==='Firebase: Error (auth/user-not-found).'){
+        const parrafoError= document.getElementById('errorCorreo');
+        parrafoError.innerHTML='correo electronico no registrado';
+        parrafoError.style.color='#ff0000';
+      }
+      if(inicirSesi==='Firebase: Error (auth/wrong-password).'){
+        const parrafoError= document.getElementById('errorContraseña');
+        parrafoError.innerHTML='Contraseña invalida';
+        parrafoError.style.color='#ff0000';
+      }else{
+        formSesion.reset(); 
+        onNavigate('/wall');
+      }    
+                        
+      
+            
+          
     });
-  }
- 
-});
+  // };
+    
+      
+  });
+  
+
 
 // INICIO SESION CON GOOGLE
 
@@ -83,30 +102,5 @@ window.addEventListener('load', function () {
 }
 });
 
-// const formReg = document.querySelector('#btn-inicioGoogle');
 
 
-
-
-
-
-
-// const linkRegistarse = document.getElementById('registrarse');
-
-// const btnInicioSes = document.getElementById('btnIngresar');
-// btnInicioSes.addEventListener('click', () => onNavigate('/Wall'));
-
-// const btnRegis = document.getElementById('registrarse');
-// btnRegis.addEventListener('click', () => onNavigate('/Register'));
-
-// const btnGoogle = document.getElementById('btn-inicioGoogle ')
-// btnGoogle.addEventListener('click', () => onNavigate('/Login'));
-
-
-    // const formulario = document.createElement('button');
-    // buttonRegister.textContent = 'Iniciar sesión con Google';
-    // buttonLogin.textContent = 'Inicia sesión';
-
-// const formulario = document.createElement('button');
-    // buttonRegister.textContent = 'Iniciar sesión con Google';
-    // buttonLogin.textContent = 'Inicia sesión';
