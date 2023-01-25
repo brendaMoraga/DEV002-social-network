@@ -3,6 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
+
 // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 
@@ -28,20 +29,60 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
 
+//REGISTRANDO UN USURARIO CON FIRE BASE
+
+// export const createUser = (email, password) => {
+
+//   createUserWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+//           const user = userCredential.user;
+//           console.log(user);
+//       })
+//       .catch((error) => {
+//           const errorCode = error.code;
+//           const errorMessage = error.message;
+//           console.log(errorCode, errorMessage)
+//       })
+// };
+
+export const createUser = async (email, password) => {
+  try {
+    return await createUserWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    return error.message;
+  }
+};
+
+
+
+
 //INICIO SESION USUARIOS EXISTENTEs:
-export const authSing = (email,password) => {
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode,errorMessage)
-  });
-}
+
+// export const authSing = async (email,password) => {
+
+// return await signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed in 
+//     const user = userCredential.user;
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     console.log(errorCode,errorMessage)
+//     
+//   });
+  
+// }
+
+export const authSing = async (email, password) => {
+  try {
+    return await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    return error.message;
+  }
+};
+
 //Observador
 export const authSesion = () =>{
 onAuthStateChanged(auth, (user) => {
@@ -55,21 +96,6 @@ onAuthStateChanged(auth, (user) => {
     // ...
   }
 });
-};
-//REGISTRANDO UN USURARIO CON FIRE BASE
-
-export const createUser = (email, password) => {
-
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
-        })
 };
 
 

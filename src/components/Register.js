@@ -9,8 +9,11 @@ export const Register = () => {
     <div class="contendorRegistro">
     <form id="registrarUsuario" >
     <input type="text" id="nombreUs"  class="inputFormulario" placeholder="Crea tu nombre de usuario" autocomplete="off">
-     <input type="email" id="correo" class="inputFormulario" placeholder="Ingresa tu correo electorico" autocomplete="off">
-     <input type="password" id="contraseña" class="inputFormulario" placeholder="Crea tu contraseña">
+    <p id="parrafoErrorName"></p> 
+    <input type="email" id="correo" class="inputFormulario" placeholder="Ingresa tu correo electorico" autocomplete="off">
+    <p id="parrafoErrorMail"></p>  
+    <input type="password" id="contraseña" class="inputFormulario" placeholder="Crea tu contraseña">
+    <p id="parrafoErrorPass"></p> 
     <select name="SelecRegis" id="btnSoy" class="btnList">
       <option> Músico Profesional</option>
       <option> Banda</option>
@@ -36,27 +39,38 @@ export const Register = () => {
 
 };
 
-window.addEventListener('load', function () {
-  const linkRegistarse = document.getElementById('registrarse');
-  if (linkRegistarse) {
-    linkRegistarse.addEventListener('click', () => onNavigate('/register'));
-  }
-});
+// window.addEventListener('load', function () {
+//   const linkRegistarse = document.getElementById('registrarse');
+//   if (linkRegistarse) {
+//     linkRegistarse.addEventListener('click', () => onNavigate('/register'));
+//   }
+// });
 
 //
 
 window.addEventListener('load', function () {
-
   const formReg = document.querySelector('#registrarUsuario');
   if(formReg){
-  formReg.addEventListener('submit', (e) => {
+  formReg.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.querySelector('#correo').value;
     const password = document.querySelector('#contraseña').value;
     console.log(email, password);
-    createUser(email, password);
-    formReg.reset();
-
+     const RegisUs = await createUser(email, password);
+    console.log(RegisUs);
+    if (RegisUs === 'auth/invalid-email Firebase: Error (auth/invalid-email).') {
+      const parrafoError = document.getElementById('parrafoErrorMail');
+      parrafoError.innerHTML = 'el campo esta vacio';
+      parrafoError.style.color = '#ff0000';
+    
+    } else if (RegisUs === 'auth/internal-error Firebase: Error (auth/internal-error).') {
+        const parrafoError = document.getElementById('parrafoErrorPass');
+        parrafoError.innerHTML = 'el campo esta vacio';
+        parrafoError.style.color = '#ff0000';
+      } else {
+        formReg.reset();
+        onNavigate('/wall');
+      }
   });
 }
 });
