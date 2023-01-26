@@ -24,7 +24,7 @@ export const Register = () => {
     <label for="start">Fecha de nacimiento</label>
    <input type="date" id="start" name="trip-start"
        value="2018-07-22"
-       min="2018-01-01" max="2018-12-31">
+       min="1940-01-01" max="2028-12-31">
        </div>
     <input type="submit" id="enviar" class="btn-Registrarse" value='REGISTRARSE'>
     </form>
@@ -50,27 +50,39 @@ export const Register = () => {
 
 window.addEventListener('load', function () {
   const formReg = document.querySelector('#registrarUsuario');
-  if(formReg){
-  formReg.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = document.querySelector('#correo').value;
-    const password = document.querySelector('#contraseña').value;
-    console.log(email, password);
-     const RegisUs = await createUser(email, password);
-    console.log(RegisUs);
-    if (RegisUs === 'auth/invalid-email Firebase: Error (auth/invalid-email).') {
-      const parrafoError = document.getElementById('parrafoErrorMail');
-      parrafoError.innerHTML = 'el campo esta vacio';
-      parrafoError.style.color = '#ff0000';
-    
-    } else if (RegisUs === 'auth/internal-error Firebase: Error (auth/internal-error).') {
+   if (formReg) {
+    formReg.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.querySelector('#correo').value;
+      const password = document.querySelector('#contraseña').value;
+      const name = document.querySelector('#nombreUs').value;
+      const date = document.querySelector('#start').value;
+      console.log(email, password, name, date);
+      const RegisUs = await createUser(email, password, name, date);
+      console.log(RegisUs);
+      if (RegisUs === 'Firebase: Error (auth/invalid-email).') {
+        const parrafoError = document.getElementById('parrafoErrorMail');
+        parrafoError.innerHTML = 'el campo esta vacio';
+        parrafoError.style.color = '#ff0000';
+         console.log(" parrafo error1: " + parrafoError);
+      } else if (RegisUs === 'Firebase: Error (auth/internal-error).') {
         const parrafoError = document.getElementById('parrafoErrorPass');
         parrafoError.innerHTML = 'el campo esta vacio';
+        parrafoError.style.color = '#ff0000';
+      } else if (RegisUs === 'Firebase: Error (auth/missing-email).') {
+        const parrafoError = document.getElementById('parrafoErrorMail');
+        parrafoError.innerHTML = 'el campo esta vacio';
+        parrafoError.style.color = '#ff0000';
+      }  else if (RegisUs === 'Firebase: Error (auth/email-already-in-use).') {
+        const parrafoError = document.getElementById('parrafoErrorMail');
+        parrafoError.innerHTML = 'correo en uso';
         parrafoError.style.color = '#ff0000';
       } else {
         formReg.reset();
         onNavigate('/wall');
       }
-  });
-}
+    });
+   }
 });
+
+
