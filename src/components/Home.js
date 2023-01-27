@@ -23,8 +23,7 @@ export const Home = () => {
         <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
         <p id='errorContraseña'> </p>
         <input type="submit" class="btn-InicioSesion" id='btnIngresar' value='Iniciar Sesión'>
-        <a href="" class="recuperarContraseña">olvide mi contraseña</a>
-      </form> 
+        </form> 
       </div>
     <div class="contenedorInicioGoogle">
     <button id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
@@ -100,6 +99,7 @@ window.addEventListener('load', function () {
   if (emailGoogle) {
     emailGoogle.addEventListener('click', () => {
       authGoogle();
+      onNavigate('/wall');
     });
     // onNavigate('/wall');
   }
