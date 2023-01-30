@@ -26,25 +26,6 @@ const store = getFirestore(app);
 
 //REGISTRANDO UN USURARIO CON FIRE BASE
 
-
-// const user = auth.currentUser;
-// export const nuevoUs= async (email, password) => {
-// if (user !== null) {
-//   The user object has basic properties such as display name, email, etc.
-//   const displayName = user.displayName;
-//   const email = user.email;
-//   const photoURL = user.photoURL;
-//   const emailVerified = user.emailVerified;
-
-//   The user's ID, unique to the Firebase project. Do NOT use
-//   this value to authenticate with your backend server, if
-//   you have one. Use User.getToken() instead.
-//   const uid = user.uid;
-// }
-// };
-
-
-
 export const createUser = async (email, password, name, date) => {
   try {
     return await createUserWithEmailAndPassword(auth, email, password, name,date);
@@ -63,16 +44,12 @@ export const createUser = async (email, password, name, date) => {
 //   });
 
 
-
-
-
-
 // 2.- SECCIÓN HOME
 
 
 //INICIO SESION USUARIOS EXISTENTEs:
 
-export const authSing = async (email, password) => {
+export const authSing = async (email, password,name) => {
   try {
     return await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {

@@ -9,9 +9,7 @@ export const Register = () => {
   divRegis.innerHTML = /*html*/`
     <div class="contendorRegistro">
     <form id="registrarUsuario" >
-    <input type="text" id="nombreUs"  class="inputFormulario" placeholder="Crea tu nombre de usuario" autocomplete="off">
-    <p id="parrafoErrorName"></p> 
-    <input type="email" id="correo" class="inputFormulario" placeholder="Ingresa tu correo electorico" autocomplete="off">
+     <input type="email" id="correo" class="inputFormulario" placeholder="Ingresa tu correo electorico" autocomplete="off">
     <p id="parrafoErrorMail"></p>  
     <input type="password" id="contraseña" class="inputFormulario" placeholder="Crea tu contraseña">
     <p id="parrafoErrorPass"></p> 
@@ -28,8 +26,9 @@ export const Register = () => {
        min="1940-01-01" max="2028-12-31">
        </div>
     <input type="submit" id="enviar" class="btn-Registrarse" value='REGISTRARSE'>
-    </form>
-    <a href="" class="recuperarContraseña">Regresar</a>
+      </form>
+      <a id='linkRegresar' class="regresar">Regresar</a>
+   
     <hr />
     </div>`
 
@@ -49,6 +48,15 @@ export const Register = () => {
 
 //
 
+window.addEventListener('load', function(){
+  const regresarHome= document.querySelector('#linkRegresar');
+  if(regresarHome){
+  regresarHome.addEventListener('click', ()=>{
+    onNavigate('/');
+  })
+}
+})
+
 window.addEventListener('load', function () {
   const formReg = document.querySelector('#registrarUsuario');
   if (formReg) {
@@ -56,23 +64,25 @@ window.addEventListener('load', function () {
       e.preventDefault();
       const email = document.querySelector('#correo').value;
       const password = document.querySelector('#contraseña').value;
-      const name = document.querySelector('#nombreUs').value;
-      const date = document.querySelector('#start').value;
-      console.log(email, password, name, date);
-      const RegisUs = await createUser(email, password, displayName, date);
+       console.log(email, password);
+      const RegisUs = await createUser(email, password);
       console.log(RegisUs);
       if (RegisUs === 'Firebase: Error (auth/invalid-email).') {
         const parrafoError = document.getElementById('parrafoErrorMail');
-        parrafoError.innerHTML = 'el campo esta vacio';
+        parrafoError.innerHTML = 'los campos estan vacio';
         parrafoError.style.color = '#ff0000';
-        console.log(" parrafo error1: " + parrafoError);
-      } else if (RegisUs === 'Firebase: Error (auth/internal-error).') {
-        const parrafoError = document.getElementById('parrafoErrorPass');// error casilla de pass sin llenar
-        parrafoError.innerHTML = 'el campo esta vacio';
+         console.log(" parrafo error1: " + parrafoError);
+      }else if (RegisUs === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+        const parrafoError = document.getElementById('parrafoErrorPass');
+        parrafoError.innerHTML = 'la contraseña debe tener minimo 6 caracteres';
+        parrafoError.style.color = '#ff0000';} 
+      else if (RegisUs === 'Firebase: Error (auth/internal-error).') {
+        const parrafoError = document.getElementById('parrafoErrorPass');
+        parrafoError.innerHTML = 'el campo de contraseña esta vacio';
         parrafoError.style.color = '#ff0000';
-      } else if (RegisUs === 'Firebase: Error (auth/missing-email).') {
-        const parrafoError = document.getElementById('parrafoErrorMail'); // error casilla de correo sin llenar
-        parrafoError.innerHTML = 'el campo esta vacio';
+       } else if (RegisUs === 'Firebase: Error (auth/missing-email).') {
+        const parrafoError = document.getElementById('parrafoErrorMail');
+        parrafoError.innerHTML = 'el campo de correo esta vacio';
         parrafoError.style.color = '#ff0000';
       } else if (RegisUs === 'Firebase: Error (auth/email-already-in-use).') {
         const parrafoError = document.getElementById('parrafoErrorMail');
@@ -85,5 +95,7 @@ window.addEventListener('load', function () {
     });
   }
 });
+
+
 
 
