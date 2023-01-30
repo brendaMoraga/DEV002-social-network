@@ -100,6 +100,8 @@ window.addEventListener('load', function () {
   if (emailGoogle) {
     emailGoogle.addEventListener('click', () => {
       authGoogle();
+      return onNavigate('/wall');
+
     });
     // onNavigate('/wall');
   }
