@@ -31,7 +31,7 @@ body {
     width: 100%;
     height: 900px;
     margin: 5% 0;
-    background-color: rgb(76, 60, 79);
+    background-color: rgb(121, 106, 124);
     /* background-image: url(img/fondo4.jpg); */
     backdrop-filter: blur(10px);
     background-size: cover;
@@ -108,12 +108,14 @@ body {
     border-radius: 50px;
     background-color: #CDFF06;
     font-weight: 700;
+    cursor: pointer;
 
 }
 
 .btn-InicioSesion:hover {
     background-color: rgba(60, 61, 92, 1);
     color: aliceblue;
+    transition: all 0.5s;
 
 }
 
@@ -149,6 +151,13 @@ body {
     margin-bottom: 5%;
     border-radius: 50px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+#btn-inicioGoogle:hover{
+    background-color: rgba(60, 61, 92, 1);
+    color: aliceblue;
+    transition: all 0.5s;
 }
 
 .contenedorLinkRegis {
@@ -157,6 +166,7 @@ body {
     padding: 0 15%;
     display: flex;
     justify-content: space-between;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .contenedorLinkRegis p {
@@ -179,14 +189,20 @@ body {
     background-size:500px;
     background-color: #ddd;
     background-size: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 
 /* contenedor del formulario */
 
+
+
 #registrarUsuario {
     width: 100%;
-    height: 100%;
+    height: 90%;
     margin: 2% 0;
     display: flex;
     flex-direction: column;
@@ -266,6 +282,14 @@ label {
     color: aliceblue;
 }
 
+.regresar{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    color:rgba(60, 61, 92, 1);
+
+}
+
 
 /*MURO*/
 
@@ -311,3 +335,4 @@ h1 {
     height: 300px;
 
 }
+ 
