@@ -1,9 +1,6 @@
-//AQUI PARTE LO DE LA SPA 
-
 /* eslint-disable import/no-cycle */
 import { Home } from './components/Home.js';
 import { Register } from './components/Register.js';
-import { Login } from './components/Login.js';
 import { Wall } from './components/Wall.js';
 
 
@@ -12,7 +9,6 @@ const root = document.getElementById('root');
 
 const routes = {
     '/': Home,
-    '/login': Login,
     '/register': Register,
     '/wall': Wall,
     };
