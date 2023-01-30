@@ -1,17 +1,12 @@
-// eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-import { authGoogle } from '../lib/firebase.js';
-import { authSesion } from '../lib/firebase.js';
-import { authSing } from '../lib/firebase.js';
+import { authGoogle, authSing } from '../lib/firebase.js';
 
-
-
-//ESTRUCTURA HTML PRIMERA VISUAL
+// ESTRUCTURA HTML PRIMERA VISUAL
 
 export const Home = () => {
-  const HomeDiv = document.createElement('main');        // no iniciar var con mayuscula (eso se hace en react)
+  const HomeDiv = document.createElement('main');
   HomeDiv.classList.add('ContainerPadre');
-  HomeDiv.innerHTML = /*html*/ `
+  HomeDiv.innerHTML = /* html */`
     <header class="contenedorHeader">
     <h1>View my Music</h1>
     <p>TODOS TUS CONCIERTOS DE MÚSICA <br> EN UN SÓLO LUGAR</p>
@@ -29,40 +24,30 @@ export const Home = () => {
     <button id="btn-inicioGoogle">Iniciar sesion con Google Chrome</button>
       <div class='contenedorLinkRegis'>
         <p>¿No tienes cuenta?</p> 
-        
         <a id="registrarse" href="">REGISTRATE</a>
       </div>
 </div>
-</div>
-`
-
+</div>`;
   return HomeDiv;
 };
 
-// ACCESO AL BOTON DE REGISTRO 
-//el btn deberia estar impreso en el dom primero antes de llamarlo, por esto aparece un null al listener 
-// para que carge primero la web antes de llamar al id en este caso usamos load
-
-window.addEventListener('load', function () {
+// ACCESO AL BOTON DE REGISTRO
+window.addEventListener('load', () => {
   const linkRegistarse = document.getElementById('registrarse');
   if (linkRegistarse) {
     linkRegistarse.addEventListener('click', () => onNavigate('/register'));
   }
 });
 
-
-
-//INICIO SESION
-window.addEventListener('load', function () {
+// INICIO SESION
+window.addEventListener('load', () => {
   const formSesion = document.querySelector('#form-InicioSesion');
   if (formSesion) {
     formSesion.addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = document.querySelector('#correoUsuario').value;
       const password = document.querySelector('#contraseñaUsuario').value;
-      console.log(email, password);
       const inicirSesi = await authSing(email, password);
-      console.log(inicirSesi);
       if (inicirSesi === 'Firebase: Error (auth/user-not-found).') {
         const parrafoError = document.getElementById('errorCorreo');
         parrafoError.innerHTML = 'correo electrónico no registrado';
@@ -84,26 +69,17 @@ window.addEventListener('load', function () {
         onNavigate('/wall');
       }
     });
-  };
-
-
+  }
 });
-
-
 
 // INICIO SESION CON GOOGLE
 
-window.addEventListener('load', function () {
-
+window.addEventListener('load', () => {
   const emailGoogle = document.querySelector('#btn-inicioGoogle');
   if (emailGoogle) {
     emailGoogle.addEventListener('click', () => {
       authGoogle();
       onNavigate('/wall');
     });
-    // onNavigate('/wall');
   }
 });
-
-
-
