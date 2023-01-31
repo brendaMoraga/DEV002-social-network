@@ -294,17 +294,25 @@ label {
     width: 100%;
     height: 900px;
     margin: 5% 0;
-    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
     background-size: 500px;
+    border: solid 2px black;
+    border-radius: 15px;
     
 }
 
 .contenedorFoto{
+    width: 100%;
+    padding: 0 0 0 5%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
+    margin-top: 10%;
 }
-
 
 .contenedorFoto img {
     width: 60px;
@@ -314,17 +322,30 @@ label {
     size: 30px;
     border-radius: 40px;
     
-    
 }
 
-
-/* .contenedorHeader h1 {
-    padding: 20px;
-    width: 200px;
-    height: 60px;
+.contenedorFoto h1{
     font-family: 'Quicksand', sans-serif;
-    font-size: 15px; */
-/* } */
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.contenedorPost{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    margin-top: 3%;
+}
+.textPost{
+    width: 80%;
+    height: max-content;
+    padding: 3%;
+    margin-bottom: 5%;
+    border-style: none;
+    }
+   
 
 .contenedorPost img {
 
@@ -332,4 +353,51 @@ label {
     height: 300px;
 
 }
- 
+
+.formComen{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.enviarComentario{
+    width: 25%;
+    height: 2rem;
+    margin-top: 30%;
+    border-radius: 10px;
+    background-color: #CDFF06;
+    font-weight: 700;
+    cursor: pointer;
+    border-style: none;
+    
+}
+
+.enviarComentario:hover {
+    background-color: rgba(60, 61, 92, 1);
+    color: aliceblue;
+    transition: all 0.5s ease;
+}
+
+.bntsalir{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.salir{
+    border-style: none;
+    width: 25%;
+    height: 2rem;
+   margin-right: 5%;
+    margin-top: 15%;
+    }
+
+.salir:hover{
+cursor: pointer;
+color:  rgba(60, 61, 92, 1);
+
+}
+
