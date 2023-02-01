@@ -41,18 +41,13 @@ export const authSing = async (email, password) => {
   }
 };
 
-//Observador
+// Observador
 export const authSesion = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
+      const uid = user.uid;55555
     } else {
-      // User is signed out
-      // ...
-    }
+     }
   });
 };
 // INICIAR SESION CON GOOGLE 
