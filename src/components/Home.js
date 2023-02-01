@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 import { authGoogle, authSing } from '../lib/firebase.js';
 

@@ -1,8 +1,20 @@
-// eslint-disable-next-line import/no-cycle
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import {
+  initializeApp,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { 
+  getFirestore, 
+  collection, 
+  addDoc,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,19 +32,18 @@ const auth = getAuth(app);
 const store = getFirestore(app);
 
 // 1.- SECCIÓN REGISTRO
-// REGISTRANDO UN USURARIO CON FIRE BASE
+// Registrando usuario con firebase
 
-export const createUser = async (email, password, name, date) => {
+export const createUser = async (email, password) => {
   try {
-    return await createUserWithEmailAndPassword(auth, email, password, name, date);
+    return await createUserWithEmailAndPassword(auth, email, password);
   } catch (error) {
     return error.message;
   }
 };
 
 // 2.- SECCIÓN HOME
-// INICIO SESION USUARIOS EXISTENTEs:
-
+// inicio de sesion correo y contraseña:
 export const authSing = async (email, password) => {
   try {
     return await signInWithEmailAndPassword(auth, email, password);
@@ -45,12 +56,19 @@ export const authSing = async (email, password) => {
 export const authSesion = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
+<<<<<<< HEAD
       const uid = user.uid;55555
+=======
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      //const uid = user.uid;
+      // ...
+>>>>>>> 5a34590dac1eb2b59d9d7db0194c0b7898e113bc
     } else {
      }
   });
 };
-// INICIAR SESION CON GOOGLE 
+// inicio de sesion con google 
 export const authGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -58,6 +76,7 @@ export const authGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+      console.log(token,user);
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -67,3 +86,10 @@ export const authGoogle = () => {
     });
 };
 // 3.- SECCIÓN WALL
+// coleccion de comentarios
+export const coleccionComentarios =  (comentario) => {
+  addDoc(collection(store,'comentarios'), { comentario });
+
+};
+
+
