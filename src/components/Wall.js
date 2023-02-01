@@ -1,4 +1,4 @@
-import { coleccionComentarios } from '../lib/firebase.js';
+import { coleccionComentarios, obtenerComentarios } from '../lib/firebase.js';
 
 export const Wall = () => {
   const divWall = document.createElement('div');
@@ -32,4 +32,9 @@ window.addEventListener('load', () => {
       coleccionComentarios(comentario.value);
     })
   }
+});
+
+window.addEventListener('DOMContentLoaded', async () => {
+ const querySnapshot = await obtenerComentarios ();
+ console.log (querySnapshot)
 });

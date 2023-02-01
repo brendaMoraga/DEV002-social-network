@@ -13,6 +13,7 @@ import {
   getFirestore, 
   collection, 
   addDoc,
+  getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
 
@@ -56,14 +57,7 @@ export const authSing = async (email, password) => {
 export const authSesion = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-<<<<<<< HEAD
       const uid = user.uid;55555
-=======
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      //const uid = user.uid;
-      // ...
->>>>>>> 5a34590dac1eb2b59d9d7db0194c0b7898e113bc
     } else {
      }
   });
@@ -92,4 +86,14 @@ export const coleccionComentarios =  (comentario) => {
 
 };
 
+export const obtenerComentarios = () => {
+  getDocs(collection(store,'comentarios'));
+};
 
+
+//export const getTask = (id) => getDoc(doc(db, "tasks", id));
+
+// export const updateTask = (id, newFields) =>
+//   updateDoc(doc(db, "tasks", id), newFields);
+
+// export const getTasks = () => getDocs(collection(db, "tasks"));
