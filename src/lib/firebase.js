@@ -6,13 +6,19 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
+  // onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { 
   getFirestore, 
   collection, 
+  getDocs,
+  onSnapshot,
   addDoc,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
 
@@ -30,6 +36,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
+
+
 
 // 1.- SECCIÓN REGISTRO
 // Registrando usuario con firebase
@@ -52,20 +60,15 @@ export const authSing = async (email, password) => {
   }
 };
 
-//Observador
-export const authSesion = () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      //const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
-};
+// Observador
+// export const authSesion = () => {
+//   onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//       const uid = user.uid;
+//     } else {
+//      }
+//   });
+// };
 // inicio de sesion con google 
 export const authGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -87,7 +90,18 @@ export const authGoogle = () => {
 // coleccion de comentarios
 export const coleccionComentarios =  (comentario) => {
   addDoc(collection(store,'comentarios'), { comentario });
+};
+export const onGetTasks = (callback) =>
+  onSnapshot(collection(store, 'comentarios'), callback);
 
+export const obtenerComentarios = () => {
+  getDocs(collection(store,'comentarios'));
 };
 
+export const deleteTask = (id) => deleteDoc(doc(store, 'comentarios', id));
+
+export const getTask = (id) => getDoc(doc(store, 'comentarios', id));
+
+export const updateTask = (id, newFields) =>
+  updateDoc(doc(store, 'comentarios', id), newFields);
 
