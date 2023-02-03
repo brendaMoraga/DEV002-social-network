@@ -105,3 +105,4 @@ export const getTask = (id) => getDoc(doc(store, 'comentarios', id));
 export const updateTask = (id, newFields) =>
   updateDoc(doc(store, 'comentarios', id), newFields);
 
+
