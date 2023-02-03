@@ -411,3 +411,7 @@ label {
     color: rgba(60, 61, 92, 1);
 
 }
+.contenedorComentario{
+    width: 80%;
+    height: max-content;
+}

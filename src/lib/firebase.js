@@ -94,9 +94,7 @@ export const coleccionComentarios =  (comentario) => {
 export const onGetTasks = (callback) =>
   onSnapshot(collection(store, 'comentarios'), callback);
 
-export const obtenerComentarios = () => {
-  getDocs(collection(store,'comentarios'));
-};
+
 
 export const deleteTask = (id) => deleteDoc(doc(store, 'comentarios', id));
 
@@ -104,5 +102,9 @@ export const getTask = (id) => getDoc(doc(store, 'comentarios', id));
 
 export const updateTask = (id, newFields) =>
   updateDoc(doc(store, 'comentarios', id), newFields);
+  
+  export const obtenerComentarios = () => {
+    getDocs(collection(store,'comentarios'));
+  };  
 
 
