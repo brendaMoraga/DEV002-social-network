@@ -21,6 +21,11 @@ import {
   updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
+import { 
+  getStorage,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
+
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -36,6 +41,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
+const storage = getStorage();
+
+
+
 
 
 
@@ -87,6 +96,23 @@ export const authGoogle = () => {
     });
 };
 // 3.- SECCIÓN WALL
+
+//postear imagenes
+let fileText = document.querySelector('.fileText')
+let fileItem;
+let fileName;
+
+export const upLoadImg = () => {
+ fileItem = e.target.files[0];
+ fileName = fileItem.name;
+ fileText.innerHTML = fileName;
+  const storageRef = firebase.storage().ref('imagenes/'+fileName);
+  const upLoad = storage.put(fileItem);
+  upLoad.on('state_changed',(snapshot) => {
+    console.log(snapshot);
+}
+
+)};  
 // coleccion de comentarios
 export const coleccionComentarios =  (comentario) => {
   addDoc(collection(store,'comentarios'), { comentario });
@@ -107,4 +133,5 @@ export const updateTask = (id, newFields) =>
     getDocs(collection(store,'comentarios'));
   };  
 
-
+  //
+  
