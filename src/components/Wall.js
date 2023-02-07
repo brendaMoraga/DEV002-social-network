@@ -4,6 +4,7 @@ import {
   deleteTask,
   getTask,
   updateTask,
+  upLoadImg,
   } from '../lib/firebase.js';
 
 export const Wall = () => {
@@ -15,7 +16,9 @@ export const Wall = () => {
 </div>
 <div class="contenedorPost">
   <textarea name="" id="" class="textPost" placeholder="Escribe una descripcion para tu publicacion..."></textarea>
-  <img class="fotoConcert" id="postUs" src="../img/flayer.png">
+  <img class="fotoConcert" id="postUs">
+  <span class='fileText'></span>
+  <button id='publicar' class="btn-Publicar"> Publicar </button>
 </div>
 <div class="btns">
 <button id="like" class="corazon"></button>
@@ -33,6 +36,17 @@ export const Wall = () => {
   return divWall;
 };
 
+
+
+
+// window.addEventListener("DOMContentLoaded", async () => {
+//   const btnCargarImg = document.querySelector('#publicar');
+//   // const post = document.querySelector('#postUs');
+//   btnCargarImg.addEventListener('click',() => {
+//     upLoadImg();
+//   }
+//   );
+// });
 
 window.addEventListener("DOMContentLoaded", async () => {
   
@@ -82,7 +96,7 @@ window.addEventListener("DOMContentLoaded", async () => {
           const task = doc.data();
           formComent['textoComent'].value = task.comentario;
 
-          editStatus = true;
+          editStatus = true; 
           id = doc.id;
           formComent['comentar'].innerText = "Update";
         } catch (error) {
