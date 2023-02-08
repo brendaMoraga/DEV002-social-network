@@ -4,7 +4,7 @@ import {
   deleteTask,
   getTask,
   updateTask,
-  upLoadImg,
+  // upLoadImg,
   } from '../lib/firebase.js';
 
 export const Wall = () => {
@@ -51,7 +51,8 @@ export const Wall = () => {
 window.addEventListener("DOMContentLoaded", async () => {
   
   const divComentario = document.querySelector('#contenedorComentario');
-  const formComent = document.querySelector('#formComentario');
+  const formComent = document.getElementById('formComentario');
+  console.log(formComent);
 
   let editStatus = false;
   let id = "";
@@ -89,6 +90,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       })
     );
     const btnsEdit = divComentario.querySelectorAll(".btn-edit");
+    console.log(btnsEdit);
     btnsEdit.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         try {
