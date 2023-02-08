@@ -10,6 +10,7 @@ import {
   GoogleAuthProvider,
   // onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from '../init.js';
 import { 
   // getFirestore, 
@@ -72,7 +73,7 @@ export const authSing = async ( auth, email, password) => {
   }
 };
 
-//Observador
+// Observador
 // export const authSesion = () => {
 //   onAuthStateChanged(auth, (user) => {
 //     if (user) {
@@ -83,22 +84,36 @@ export const authSing = async ( auth, email, password) => {
 // };
 
 // inicio de sesion con google 
-export const authGoogle = () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user;
-      console.log(token,user);
-    }).catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(errorCode, errorMessage, email, credential);
-    });
+// export const authGoogle = () => {
+//    const provider = new GoogleAuthProvider();
+//   signInWithPopup(auth, provider)
+//     .then((result) => {
+//       const credential = GoogleAuthProvider.credentialFromResult(result);
+//       const token = credential.accessToken;
+//       const user = result.user;
+//       console.log(token,user);
+//     }).catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       const email = error.customData.email;
+//       const credential = GoogleAuthProvider.credentialFromError(error);
+//       console.log(errorCode, errorMessage, email, credential);
+//     });
+// };
+
+export const authGoogle = async () => {
+const provider = new GoogleAuthProvider();
+try {
+  const credentials = await signInWithPopup(auth, provider)
+  console.log(credentials);
+  console.log("google sign in");
+  
+} catch (error) {
+  console.log(error);
+}
 };
+
+
 // 3.- SECCIÓN WALL
 
 // //postear imagenes
@@ -138,6 +153,14 @@ export const updateTask = (id, newFields) =>
     getDocs(collection(store,'comentarios'));
   };  
 
-  //
+  // LOGOUT
+  export const logOutSesion = async (auth) => {
+  try {
+    await signOut(auth)
+    console.log("signup out");
+  } catch (error) {
+    console.log(error)
+  }
+};
   
-export { initializeApp, createUserWithEmailAndPassword, signInWithEmailAndPassword }
+export { initializeApp, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider}

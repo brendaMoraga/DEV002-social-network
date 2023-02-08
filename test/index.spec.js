@@ -3,8 +3,8 @@
 // import { TestWatcher } from 'jest';
 // import { async } from 'regenerator-runtime';
 // import { createUser } from '../src/lib/firebase.js';
-import { createUser, auth, authSing } from '../src/lib/firebase.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '../src/init.js';
+import { createUser, auth, authSing, authGoogle } from '../src/lib/firebase.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,GoogleAuthProvider } from '../src/init.js';
 
 //TEST PARA CREAR/REGISTRAR USUARIO
 jest.mock('../src/init.js', () => {
@@ -27,14 +27,18 @@ jest.mock('../src/init.js', () => {
       }
       Promise.resolve({ user: 'admin' })
 
-    })
+    }),
 
-
-    
+    signInWithPopup: jest.fn((auth, provider) => {
+      if (!auth || !provider) {
+        throw new Error('ERROR')
+      }
+      Promise.resolve({ user: 'admin' })
+    }),
   }
-
 })
 
+//TEST PARA FUNCION REGISTRAR USUARIO
 describe('Test para resgistro de usuario', () => {
   const email = 'admin@test.com'
   const password = 'admin123'
@@ -56,16 +60,7 @@ describe('Test para resgistro de usuario', () => {
   })
 })
 
-//TEST PARA INICIO DE SESIÓN 
-
-// jest.mock('../src/init.js', () => {
-//   return {
-//     auth: jest.fn(() => {
-//       return { auth: 'TEST' }
-//     }),
-
-  
-
+//TEST PARA FUNCION DE INICIO DE SESIÓN   
 describe('Test para inicio sesion de usuario', () => {
   const email = 'admin@test.com'
   const password = 'admin123'
@@ -87,16 +82,23 @@ describe('Test para inicio sesion de usuario', () => {
   })
 })
 
-// // describe ('test para las funciones de firebase.js', () => {
-// //   it('debería ser una función', () => {
-// //     expect(typeof (createUser)).toBe('function');
-// //   });
-// //   test('la funcion createUser crea un objeto con los valores de password and email de usuario que se registra', () => {
-// //     let email = 'adrianayhanna@gmail.com'
-// //     let password = 'hannabanana'
-// //     let usuario = createUser (email, password)
+//TEST PARA FUNCION INICIO DE SESION CON GOOGLE 
+describe('Test para inicio sesion de usuario con google', () => {
+  const provider = GoogleAuthProvider;
 
-// //     expect (usuario).toEqual({email,password})
-// //   });
-
-// // });
+  it('la funcion llama a signInWithPopup', async () => {
+    await authGoogle(auth, provider)
+    expect(signInWithPopup).toHaveBeenCalled()
+  })
+  it('la funcion debe llamar a signInWithPopup con argumentos', async () => {
+    await authGoogle(auth, provider)
+    expect(signInWithPopup).toHaveBeenCalledWith(auth, provider)
+  })
+  it('Should throw an error if executed without argument', async () => {
+    try {
+      await authGoogle()
+    } catch (error) {
+      expect(error).toMatch('ERROR')
+    }
+  })
+})

@@ -3,6 +3,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import {
     getAuth,
+    signOut,
     createUserWithEmailAndPassword,
     signInWithPopup,
     GoogleAuthProvider,
@@ -48,5 +49,6 @@ export {
     doc,
     getDoc,
     updateDoc,
+    signOut,
     
 }
