@@ -74,11 +74,11 @@ window.addEventListener('load', () => {
 
 // INICIO SESION CON GOOGLE
 
-window.addEventListener('load', () => {
+window.addEventListener('load',  () => {
   const emailGoogle = document.querySelector('#btn-inicioGoogle');
   if (emailGoogle) {
-    emailGoogle.addEventListener('click', () => {
-      authGoogle();
+    emailGoogle.addEventListener('click', async () => {
+     await authGoogle();
       onNavigate('/wall');
     });
   }

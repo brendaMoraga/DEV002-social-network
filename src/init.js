@@ -49,6 +49,5 @@ export {
     doc,
     getDoc,
     updateDoc,
-    signOut,
-    
+    signOut,   
 }

@@ -3,8 +3,8 @@
 // import { TestWatcher } from 'jest';
 // import { async } from 'regenerator-runtime';
 // import { createUser } from '../src/lib/firebase.js';
-import { createUser, auth, authSing, authGoogle } from '../src/lib/firebase.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup,GoogleAuthProvider } from '../src/init.js';
+import { createUser, auth, authSing, authGoogle, logOut} from '../src/lib/firebase.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from '../src/init.js';
 
 //TEST PARA CREAR/REGISTRAR USUARIO
 jest.mock('../src/init.js', () => {
@@ -35,7 +35,20 @@ jest.mock('../src/init.js', () => {
       }
       Promise.resolve({ user: 'admin' })
     }),
-  }
+
+    signOut: jest.fn((auth) => {
+      if (!auth) {
+        throw new Error('ERROR')
+      }
+      Promise.resolve({ user: 'admin' })
+    
+  }),
+
+  provider: jest.fn(() => {
+    return { provider: 'provider' }
+  }),
+
+ }
 })
 
 //TEST PARA FUNCION REGISTRAR USUARIO
@@ -84,7 +97,7 @@ describe('Test para inicio sesion de usuario', () => {
 
 //TEST PARA FUNCION INICIO DE SESION CON GOOGLE 
 describe('Test para inicio sesion de usuario con google', () => {
-  const provider = GoogleAuthProvider;
+  
 
   it('la funcion llama a signInWithPopup', async () => {
     await authGoogle(auth, provider)
@@ -97,6 +110,28 @@ describe('Test para inicio sesion de usuario con google', () => {
   it('Should throw an error if executed without argument', async () => {
     try {
       await authGoogle()
+    } catch (error) {
+      expect(error).toMatch('ERROR')
+    }
+  })
+})
+
+//TEST PARA LOGOUT
+describe('Test para función Logout', () => {
+  // const email = 'admin@test.com'
+  // const password = 'admin123'
+
+  it('la funcion llama a signOut', async () => {
+    await logOut(auth)
+    expect(signOut).toHaveBeenCalled()
+  })
+  it('la funcion debe llamar a signOut con argumentos', async () => {
+    await logOut(auth)
+    expect(signOut).toHaveBeenCalledWith(auth)
+  })
+  it('Should throw an error if executed without argument', async () => {
+    try {
+      await logOut()
     } catch (error) {
       expect(error).toMatch('ERROR')
     }

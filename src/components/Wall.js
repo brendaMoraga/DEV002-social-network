@@ -5,7 +5,7 @@ import {
   deleteTask,
   getTask,
   updateTask,
-  logOutSesion,
+  logOut,
   // upLoadImg,
 } from '../lib/firebase.js';
 
@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     const btnLogOut = document.querySelector('#cerrarSesion');
     if (btnLogOut) {
       btnLogOut.addEventListener('click', () => {
-        logOutSesion();
+        logOut();
         onNavigate('/');
       });
     }

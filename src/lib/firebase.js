@@ -154,7 +154,7 @@ export const updateTask = (id, newFields) =>
   };  
 
   // LOGOUT
-  export const logOutSesion = async (auth) => {
+  export const logOut = async (auth) => {
   try {
     await signOut(auth)
     console.log("signup out");
@@ -163,4 +163,4 @@ export const updateTask = (id, newFields) =>
   }
 };
   
-export { initializeApp, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider}
+export { initializeApp, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut}
