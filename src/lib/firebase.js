@@ -109,7 +109,7 @@ try {
   console.log("google sign in");
   
 } catch (error) {
-  console.log(error);
+  return error.message;
 }
 };
 
@@ -139,16 +139,10 @@ export const coleccionComentarios =  (comentario) => {
 };
 export const onGetTasks = (callback) =>
   onSnapshot(collection(store, 'comentarios'), callback);
-
-
-
 export const deleteTask = (id) => deleteDoc(doc(store, 'comentarios', id));
-
 export const getTask = (id) => getDoc(doc(store, 'comentarios', id));
-
 export const updateTask = (id, newFields) =>
   updateDoc(doc(store, 'comentarios', id), newFields);
-  
   export const obtenerComentarios = () => {
     getDocs(collection(store,'comentarios'));
   };  

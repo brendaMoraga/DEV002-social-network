@@ -20,6 +20,7 @@ import {
     doc,
     getDoc,
     updateDoc,
+    
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
 
@@ -28,6 +29,7 @@ import { firebaseConfig } from './lib/config.js';
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
+
 
 export {
     app,
