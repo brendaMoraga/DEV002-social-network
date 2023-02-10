@@ -75,9 +75,8 @@ window.addEventListener("DOMContentLoaded", async () => {
       <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
         🖉 Edit
       </button>
-      <button class="btnLike" data-id="${doc.id}">
-      like
-      </button>
+
+      <p class="btnLike" id="btnLike" data-id="${doc.id}">♡ ${task.totalLikes}</p>
     </div>
   </div>`;
     });
@@ -88,7 +87,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 const botonLike = divComentario.querySelectorAll('#btnLike');  
 botonLike.forEach((btnLike) => {
   btnLike.addEventListener('click', (e) => {
-    console.log(' despues de forEach')
+    console.log('Ingreso al boton')
 
     const currentUserLike = user().uid;
     const idLikeButton = e.target.dataset.id;
