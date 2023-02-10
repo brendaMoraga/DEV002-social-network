@@ -1,17 +1,17 @@
 import {
   initializeApp,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { 
-  getAuth, 
+import {
+  getAuth,
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
   // onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { 
-  getFirestore, 
-  collection, 
+import {
+  getFirestore,
+  collection,
   getDocs,
   onSnapshot,
   addDoc,
@@ -19,11 +19,13 @@ import {
   doc,
   getDoc,
   updateDoc,
+  arrayRemove,
+  arrayUnion,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
-import { 
-  getStorage,
-} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
+// import {
+//   getStorage,
+// } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js';
 
 
 
@@ -41,7 +43,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const store = getFirestore(app);
-const storage = getStorage();
+// const storage = getStorage();
+export const user = () => auth.currentUser;
+
 
 
 
@@ -78,7 +82,7 @@ export const authSing = async (email, password) => {
 //      }
 //   });
 // };
-// inicio de sesion con google 
+// inicio de sesion con google
 export const authGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
@@ -98,24 +102,25 @@ export const authGoogle = () => {
 // 3.- SECCIÓN WALL
 
 //postear imagenes
-let fileText = document.querySelector('.fileText')
-let fileItem;
-let fileName;
+// let fileText = document.querySelector('.fileText')
+// let fileItem;
+// let fileName;
 
-export const upLoadImg = () => {
- fileItem = e.target.files[0];
- fileName = fileItem.name;
- fileText.innerHTML = fileName;
-  const storageRef = firebase.storage().ref('imagenes/'+fileName);
-  const upLoad = storage.put(fileItem);
-  upLoad.on('state_changed',(snapshot) => {
-    console.log(snapshot);
-}
+// export const upLoadImg = () => {
+//  fileItem = e.target.files[0];
+//  fileName = fileItem.name;
+//  fileText.innerHTML = fileName;
+//   const storageRef = firebase.storage().ref('imagenes/'+fileName);
+//   const upLoad = storage.put(fileItem);
+//   upLoad.on('state_changed',(snapshot) => {
+//     console.log(snapshot);
+// }
 
-)};  
+// )};
+
 // coleccion de comentarios
-export const coleccionComentarios =  (comentario) => {
-  addDoc(collection(store,'comentarios'), { comentario });
+export const coleccionComentarios =  (comentario, totalLikes, likeUsuario  ) => {
+  addDoc(collection(store,'comentarios'), { comentario, totalLikes, likeUsuario  });
 };
 export const onGetTasks = (callback) =>
   onSnapshot(collection(store, 'comentarios'), callback);
@@ -128,10 +133,16 @@ export const getTask = (id) => getDoc(doc(store, 'comentarios', id));
 
 export const updateTask = (id, newFields) =>
   updateDoc(doc(store, 'comentarios', id), newFields);
-  
+
   export const obtenerComentarios = () => {
     getDocs(collection(store,'comentarios'));
-  };  
+  };
 
-  //
-  
+  //likes
+
+
+export const like = (id, likes, userLike) => updateDoc(doc(store, 'comentarios', id),
+ { totalLikes: likes, likeUsuario: arrayUnion(userLike) });
+
+export const disLike = (id, likes, userLike) => updateDoc(doc(store, 'comentarios', id),
+ { totalLikes: likes, likeUsuario: arrayRemove(userLike) });

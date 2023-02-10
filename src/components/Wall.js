@@ -4,7 +4,10 @@ import {
   deleteTask,
   getTask,
   updateTask,
-  upLoadImg,
+  user,
+  //upLoadImg,
+  like,
+  disLike,
   } from '../lib/firebase.js';
 
 export const Wall = () => {
@@ -72,9 +75,41 @@ window.addEventListener("DOMContentLoaded", async () => {
       <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
         🖉 Edit
       </button>
+      <button class="btnLike" data-id="${doc.id}">
+      like
+      </button>
     </div>
   </div>`;
     });
+
+
+    //likes
+  
+const botonLike = divComentario.querySelectorAll('#btnLike');  
+botonLike.forEach((btnLike) => {
+  btnLike.addEventListener('click', (e) => {
+    console.log(' despues de forEach')
+
+    const currentUserLike = user().uid;
+    const idLikeButton = e.target.dataset.id;
+
+
+      getTask(idLikeButton)
+      .then((document) => {
+        const post = document.data();
+
+          if (!post.likeUsuario.includes(currentUserLike)) {
+            console.log('entro al if')
+            const likes = (post.totalLikes) + 1;
+            like(idLikeButton, likes, currentUserLike);
+        } else {
+          const likes = (post.totalLikes) - 1;
+          disLike(idLikeButton, likes, currentUserLike);
+        }
+      })
+      .catch(() => {});
+  });
+});
 
     const btnsDelete = divComentario.querySelectorAll(".btn-delete");
        btnsDelete.forEach((btn) =>
@@ -113,7 +148,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   
     try {
        if (!editStatus) {
-        await coleccionComentarios(description.value);
+        await coleccionComentarios(description.value, 0, []);
       } else {
         await updateTask(id, {
           comentario: description.value,
