@@ -1,5 +1,6 @@
 import { onNavigate } from '../main.js';
 import { createUser } from '../lib/firebase.js';
+import { auth } from '../init.js';
 
 
 export const Register = () => {
@@ -48,7 +49,7 @@ window.addEventListener('load', () => {
       e.preventDefault();
       const email = document.querySelector('#correo').value;
       const password = document.querySelector('#contraseña').value;
-      const RegisUs = await createUser(email, password);
+      const RegisUs = await createUser(auth, email, password);
       if (RegisUs === 'Firebase: Error (auth/invalid-email).') {
         const parrafoError = document.getElementById('parrafoErrorMail');
         parrafoError.innerHTML = 'los campos estan vacio';
@@ -71,7 +72,8 @@ window.addEventListener('load', () => {
         parrafoError.style.color = '#ff0000';
       } else {
         formReg.reset();
-        onNavigate('/wall');
+        onNavigate('/');
+
       }
     });
   }

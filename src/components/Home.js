@@ -73,7 +73,6 @@ window.addEventListener('load', () => {
 });
 
 // INICIO SESION CON GOOGLE
-
 window.addEventListener('load',  () => {
   const emailGoogle = document.querySelector('#btn-inicioGoogle');
   if (emailGoogle) {
