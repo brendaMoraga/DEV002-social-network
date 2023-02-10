@@ -4,7 +4,7 @@
 // import { async } from 'regenerator-runtime';
 // import { createUser } from '../src/lib/firebase.js';
 import { createUser, auth, authSing, logOut} from '../src/lib/firebase.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword,  signOut  } from '../src/init.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from '../src/init.js';
 
 //TEST PARA CREAR/REGISTRAR USUARIO
 jest.mock('../src/init.js', () => {
