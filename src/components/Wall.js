@@ -113,8 +113,12 @@ botonLike.forEach((btnLike) => {
     const btnsDelete = divComentario.querySelectorAll(".btn-delete");
        btnsDelete.forEach((btn) =>
        btn.addEventListener("click", async ({ target: { dataset } }) => {
+        // eslint-disable-next-line no-restricted-globals
+        const deleteConfirm = confirm('Estas seguro de borrar este comentario?');
+        if (deleteConfirm) {
+          deleteTask(dataset.id);
+        }
         try {
-          console.log(dataset)
           await deleteTask(dataset.id);
         } catch (error) {
           console.log(error);
