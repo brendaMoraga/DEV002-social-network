@@ -1,11 +1,13 @@
+import { onNavigate } from '../main.js';
 import {
   onGetTasks,
   coleccionComentarios,
   deleteTask,
   getTask,
   updateTask,
-  upLoadImg,
-  } from '../lib/firebase.js';
+  logOut,
+  // upLoadImg,
+} from '../lib/firebase.js';
 
 export const Wall = () => {
   const divWall = document.createElement('div');
@@ -49,14 +51,15 @@ export const Wall = () => {
 // });
 
 window.addEventListener("DOMContentLoaded", async () => {
-  
+
   const divComentario = document.querySelector('#contenedorComentario');
-  const formComent = document.querySelector('#formComentario');
+  const formComent = document.getElementById('formComentario');
+  console.log(formComent);
 
   let editStatus = false;
   let id = "";
-  
-  onGetTasks((querySnapshot) => { 
+
+  onGetTasks((querySnapshot) => {
     divComentario.innerHTML = "";
 
     querySnapshot.forEach((doc) => {
@@ -77,18 +80,19 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     const btnsDelete = divComentario.querySelectorAll(".btn-delete");
-       btnsDelete.forEach((btn) =>
-       btn.addEventListener("click", async ({ target: { dataset } }) => {
+    btnsDelete.forEach((btn) =>
+      btn.addEventListener("click", async ({ target: { dataset } }) => {
         try {
           console.log(dataset)
           await deleteTask(dataset.id);
         } catch (error) {
           console.log(error);
         }
-        
+
       })
     );
     const btnsEdit = divComentario.querySelectorAll(".btn-edit");
+    console.log(btnsEdit);
     btnsEdit.forEach((btn) => {
       btn.addEventListener("click", async (e) => {
         try {
@@ -96,7 +100,7 @@ window.addEventListener("DOMContentLoaded", async () => {
           const task = doc.data();
           formComent['textoComent'].value = task.comentario;
 
-          editStatus = true; 
+          editStatus = true;
           id = doc.id;
           formComent['comentar'].innerText = "Update";
         } catch (error) {
@@ -105,32 +109,39 @@ window.addEventListener("DOMContentLoaded", async () => {
       });
     });
   });
-  
 
-  formComent.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const description = formComent['textoComent'];
-  
-    try {
-       if (!editStatus) {
-        await coleccionComentarios(description.value);
-      } else {
-        await updateTask(id, {
-          comentario: description.value,
-          
-        });
-  
-        editStatus = false;
-        id = "";
-        formComent['comentar'].innerText = "Save";
+  window.addEventListener('load', () => {
+    formComent.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const description = formComent['textoComent'];
+      try {
+        if (!editStatus) {
+          await coleccionComentarios(description.value);
+        } else {
+          await updateTask(id, {
+            comentario: description.value,
+          });
+
+          editStatus = false;
+          id = "";
+          formComent['comentar'].innerText = "Save";
+        }
+
+        formComent.reset();
+        // description.focus();
+      } catch (error) {
+        console.log(error);
       }
-  
-      formComent.reset();
-      // description.focus();
-    } catch (error) {
-      console.log(error);
-    }
+    });
   });
+
+  window.addEventListener('load', () => {
+    const btnLogOut = document.querySelector('#cerrarSesion');
+    if (btnLogOut) {
+      btnLogOut.addEventListener('click', () => {
+        logOut();
+        onNavigate('/');
+      });
+    }
+})
 });
-
-
