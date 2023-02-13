@@ -1,6 +1,6 @@
 import {
-  initializeApp,
-  // app,
+  // initializeApp,
+  app,
 } from '../init.js';
 import { 
   auth,
@@ -87,4 +87,4 @@ export const updateTask = (id, newFields) =>
   }
 };
   
-export { initializeApp, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut}
+export { app, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut}

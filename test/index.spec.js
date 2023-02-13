@@ -3,8 +3,8 @@
 // import { TestWatcher } from 'jest';
 // import { async } from 'regenerator-runtime';
 // import { createUser } from '../src/lib/firebase.js';
-import { createUser, auth, authSing, logOut} from '../src/lib/firebase.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut  } from '../src/init.js';
+import { createUser, auth, authSing, logOut,authGoogle} from '../src/lib/firebase.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup } from '../src/init.js';
 
 //TEST PARA CREAR/REGISTRAR USUARIO
 jest.mock('../src/init.js', () => {
@@ -29,12 +29,12 @@ jest.mock('../src/init.js', () => {
 
     }),
 
-    // signInWithPopup: jest.fn((auth, provider) => {
-    //   if (!auth || !provider) {
-    //     throw new Error('ERROR')
-    //   }
-    //   Promise.resolve({ user: 'admin' })
-    // }),
+    signInWithPopup: jest.fn((auth, provider) => {
+      if (!auth || !provider) {
+        throw new Error('ERROR')
+      }
+      Promise.resolve({ user: 'admin' })
+    }),
 
     signOut: jest.fn((auth) => {
       if (!auth) {
@@ -47,6 +47,10 @@ jest.mock('../src/init.js', () => {
   // provider: jest.fn(() => {
   //   return { provider: 'provider' }
   // }),
+
+  GoogleAuthProvider: jest.fn(() => {
+    return { }
+  }),
 
  }
 })
@@ -96,26 +100,27 @@ describe('Test para inicio sesion de usuario', () => {
 })
 
 //TEST PARA FUNCION INICIO DE SESION CON GOOGLE 
-// describe('Test para inicio sesion de usuario con google', () => {
+describe('Test para inicio sesion de usuario con google', () => {
   
 
-//   it('la funcion llama a signInWithPopup', async () => {
-//     const provider = GoogleAuthProvider;
-//     await authGoogle(auth, provider)
-//     expect(signInWithPopup).toHaveBeenCalled()
-//   })
-//   it('la funcion debe llamar a signInWithPopup con argumentos', async () => {
-//     await authGoogle(auth, provider)
-//     expect(signInWithPopup).toHaveBeenCalledWith(auth, provider)
-//   })
-//   it('Should throw an error if executed without argument', async () => {
-//     try {
-//       await authGoogle()
-//     } catch (error) {
-//       expect(error).toMatch('ERROR')
-//     }
-//   })
-// })
+  it('la funcion llama a signInWithPopup', async () => {
+    // const provider = GoogleAuthProvider;
+    await authGoogle()
+    expect(signInWithPopup).toHaveBeenCalled()
+  })
+  // it('la funcion debe llamar a signInWithPopup con argumentos', async () => {
+  //   const provider = GoogleAuthProvider;
+  //   await authGoogle()
+  //   expect(signInWithPopup).toHaveBeenCalledWith(auth, provider)
+  // })
+  // it('Should throw an error if executed without argument', async () => {
+  //   try {
+  //     await authGoogle()
+  //   } catch (error) {
+  //     expect(error).toMatch('ERROR')
+  //   }
+  // })
+})
 
 //TEST PARA LOGOUT
 describe('Test para función Logout', () => {
