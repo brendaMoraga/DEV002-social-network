@@ -8,7 +8,10 @@ import {
   //upLoadImg,
   like,
   disLike,
+  logOut,
   } from '../lib/firebase.js';
+  
+  import { onNavigate } from '../main.js'
 
 export const Wall = () => {
   const divWall = document.createElement('div');
@@ -171,4 +174,13 @@ botonLike.forEach((btnLike) => {
   });
 });
 
+window.addEventListener('load', () => {
+  const btnLogOut = document.querySelector('#cerrarSesion');
+  if (btnLogOut) {
+    btnLogOut.addEventListener('click', () => {
+      logOut();
+      onNavigate('/');
+    });
+  }
+});
 
