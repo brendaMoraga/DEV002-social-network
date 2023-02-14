@@ -28,10 +28,10 @@ Permitir al usuario interactuar con sus artistas favoritos.
 Permitirá saber fechas cercanas  a eventos, descuentos de boletería, interacción con los  músicos que comparten sus eventos en la red social.
 5. Prototipos
 5.1 Baja Fidelidad
-![Alt text](src/img/Proto_de_baja_opcion.jpeg.jpg)
+![Alt text](src/img/baja.jpeg)
 **5.2 Alta Fidelidad **
 Mobile
-![Alt text](src/img/proto%20de%20alta1.png)
+![Alt text](src/img/alta.jpeg)
 Link figma: [FIGMA](https://www.figma.com/proto/8YLIS3Gmc4QWFoFUpY1DNx/Untitled?node-id=10%3A6&scaling=scale-down&page-id=0%3A1&starting-point-node-id=10%3A6&show-proto-sidebar=1)
 
 5.3 DISEÑO FINAL PROYECTO

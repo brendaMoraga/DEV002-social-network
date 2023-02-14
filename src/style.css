@@ -223,15 +223,27 @@ body {
     justify-content: center;
     align-items: center;
 }
+.card-body p {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    background: aliceblue;
+    padding: 2%;
+    border-radius: 10px;
+    margin-bottom: 1%;
+    overflow: hidden;
+    white-space: nowrap;
+}
 
-/* #registrarUsuario p {
+
+#registrarUsuario p {
     color: #942626;
     font-size: 0.8rem;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     margin-bottom: 10px;
 
-} */
+}
 
 .inputFormulario {
     width: 70%;
@@ -442,17 +454,6 @@ input #file-upload-button {
     align-items: center;
 }
 
-.card-body p {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    background: aliceblue;
-    padding: 2%;
-    border-radius: 10px;
-    margin-bottom: 1%;
-    overflow: hidden;
-    white-space: nowrap;
-}
 
 .btn {
     margin-right: 5%;
