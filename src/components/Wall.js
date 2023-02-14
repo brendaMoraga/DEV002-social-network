@@ -5,7 +5,7 @@ import {
   getTask,
   updateTask,
   user,
-  //upLoadImg,
+  upLoadImg,
   like,
   disLike,
   logOut,
@@ -22,9 +22,8 @@ export const Wall = () => {
   <h1>Nombre de Usuario</h1>
 </div>
 <div class="contenedorPost">
-  <textarea name="" id="" class="textPost" placeholder="Escribe una descripcion para tu publicacion..."></textarea>
-  <img class="fotoConcert" id="postUs">
-  <span class='fileText'></span>
+  <input type='file' id='selecImg' class='inputImagen'> 
+  <img class="fotoConcert" id="imagen"/>
   <button id='publicar' class="btn-Publicar"> Publicar </button>
 </div>
 <div class="btns">
@@ -35,7 +34,7 @@ export const Wall = () => {
   <textarea name="" id="textoComent" class="textPost" placeholder="escribe un comentario..."></textarea>
   <button id="comentar" class="enviarComentario"> Comentar </button>
 </form>
-<div id="contenedorComentario"></div>
+<div id="contenedorComentario" class='divComentarios'></div>
 <div class="bntsalir">
   <button id="cerrarSesion" class="salir">Cerrar sesion</button>
 </div>
@@ -43,7 +42,28 @@ export const Wall = () => {
   return divWall;
 };
 
+// Subir un Post:
 
+window.addEventListener("DOMContentLoaded", async () => {
+
+  const btnPublicar = document.querySelector('#publicar');
+  console.log(btnPublicar)
+  btnPublicar.addEventListener('click', async () => {
+    const file = document.querySelector('#selecImg').files[0];
+    if (file == null){
+      alert('No has seleccionado un archivo');
+    }else{
+    
+    // const name = new Date + '-' + file.name
+   const imagenUser = await upLoadImg(file);
+   const imagenPost = document.querySelector('#imagen')
+    imagenPost.setAttribute('src', imagenUser);
+  }
+       
+  });
+});
+
+// // Agregar, eliminar y editar comentario:
 
 window.addEventListener("DOMContentLoaded", async () => {
   const divComentario = document.querySelector('#contenedorComentario');
@@ -58,7 +78,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       divComentario.innerHTML += `
       <div class="card card-body  border-primary">
     <p>${task.comentario}</p>
-    <div>
+    <div class='divBotonesWall'>
       <button class="btn btn-primary btn-delete" data-id="${doc.id}">
         🗑 Delete
       </button>

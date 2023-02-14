@@ -46,7 +46,7 @@ root.appendChild(component());
 
 
 
-
+// QUÉ ES UNA PROMESA
 // Una promesa en JavaScript es un objeto
 //  que representa un valor que puede no estar 
 //  disponible en el momento en que se crea la promesa, 
@@ -59,3 +59,14 @@ root.appendChild(component());
 //   (pending), "cumplida" (fulfilled) o "rechazada" 
 //   (rejected), y se pueden encadenar para crear flujos
 //    de control más complejos.
+
+// QUÉ ES UN ROUTER 
+// En JavaScript, un router es una herramienta 
+// que permite controlar el enrutamiento o la navegación
+// dentro de una aplicación web o sitio web. Esto implica 
+// manejar la dirección URL que se muestra en el navegador
+// y cargar la página correspondiente en función de la ruta 
+// que se solicite. Los routers en JavaScript son comúnmente
+// utilizados en aplicaciones de una sola página (SPA)
+// y se implementan con bibliotecas o 
+// frameworks como React, Angular, Vue, entre otros.

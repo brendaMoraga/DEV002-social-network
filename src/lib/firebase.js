@@ -27,12 +27,19 @@ import {
   arrayUnion,
 } from '../init.js';
 
+import { 
+  storage,
+  ref,
+  getDownloadURL,
+  uploadBytes,
+} from '../init.js';
+
 
 
 // 1.- SECCIÓN REGISTRO
 // Registrando usuario con firebase
 
-export const createUser = async (auth, email, password) => {
+export const createUser = async (auth,email, password) => {
   try {
     return await createUserWithEmailAndPassword(auth, email, password);
   } catch (error) {
@@ -65,6 +72,15 @@ export const authGoogle = async () => {
 };
 
 // 3.- SECCIÓN WALL
+//Postear imagen:
+export const upLoadImg = async (file) => {
+
+  const storageRef = ref(storage, 'imagenes');
+  await uploadBytes(storageRef, file)
+  const url = await getDownloadURL(storageRef)
+  console.log(url)
+  return url
+}
 // DIV coleccion de comentarios fans
 export const coleccionComentarios = (comentario, totalLikes, likeUsuario) => {
   addDoc(collection(store, 'comentarios'), { comentario, totalLikes, likeUsuario });

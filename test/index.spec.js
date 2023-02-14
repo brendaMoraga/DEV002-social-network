@@ -83,7 +83,7 @@ describe('Test para inicio sesion de usuario', () => {
   const password = 'admin123'
 
   it('la funcion llama a signInWithEmailAndPassword', async () => {
-    await authSing(email, password)
+    await authSing(auth,email, password)
     expect(signInWithEmailAndPassword).toHaveBeenCalled()
   })
   it('la funcion debe llamar a signInWithEmailAndPassword con argumentos', async () => {
