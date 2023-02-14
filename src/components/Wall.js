@@ -79,10 +79,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     <p>${task.comentario}</p>
     <div class='divBotonesWall'>
       <button class="btn btn-primary btn-delete" data-id="${doc.id}">
-        🗑 Delete
+        🗑 
       </button>
       <button class="btn btn-secondary btn-edit" data-id="${doc.id}">
-        🖉 Edit
+        🖉 
       </button>
       <p class="btnLike" id="btnLike" data-id="${doc.id}">♡ ${task.totalLikes}</p>
     </div>

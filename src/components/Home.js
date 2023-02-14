@@ -11,6 +11,7 @@ export const Home = () => {
     <header class="contenedorHeader">
   <h1>View my Music</h1>
   <p>"TODOS TUS CONCIERTOS DE MÚSICA EN UN SÓLO LUGAR"</p>
+  <img src='img/chicaMusica.jpg' class='fondoChica'>
   </header> 
  <div class="contendorInicio">
     <form id="form-InicioSesion" class='formInicioSesion' >
