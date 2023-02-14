@@ -9,6 +9,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     display: flex;
     justify-content: center;
@@ -16,13 +17,16 @@ body {
 }
 
 #root {
+    /* background-image: url(img/fondo4.jpg); */
+    /* backdrop-filter: ; */
+    background-color: #8aa6be;
     width: 375px;
     /* height: max-content; */
     height: 900px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+  
 }
 
 /*PANTALLA HOME*/
@@ -31,9 +35,6 @@ body {
     width: 100%;
     height: 900px;
     margin: 5% 0;
-    /* background-color: rgb(121, 106, 124); */
-    background-image: url(img/perfil.png);
-    backdrop-filter: blur(10px);
     background-size: cover;
     overflow: hidden;
     overflow-y: scroll;
@@ -44,31 +45,37 @@ body {
 .imagen {
     filter: blur(5px);
 }
+/* .logoApp{
+   width: 18rem;
+   height: 18rem;
+   
+} */
 
 .contenedorHeader {
-    display: flex;
+     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: max-content;
-    padding: 20% 0;
-
 }
 
 .contenedorHeader h1 {
+    margin-top: 30%;
+    margin-bottom: 6%;
     color: #CDFF06;
     font-family: 'Rubik Vinyl', cursive;
     font-size: 2.5rem;
-    text-shadow: rgba(60, 61, 92, 1);
 
 }
 
 .contenedorHeader p {
-    margin-top: 30%;
-    color: rgb(134, 128, 134);
-    font-family: 'Quicksand', sans-serif;
-    font-size: small
+    margin-top: 11%;
+    margin-bottom: 40%;
+    color: rgb(29, 29, 28);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
 
@@ -82,7 +89,7 @@ body {
 
 }
 
-#form-InicioSesion {
+.formInicioSesion{
     width: 100%;
     height: max-content;
     display: flex;
@@ -90,7 +97,11 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.formInicioSesion p{
+   color: #942626;
+   font-family: 'Quicksand', sans-serif;
+   font-weight: 500;
+}
 
 
 .inputInicio {
@@ -98,17 +109,9 @@ body {
     height: min-content;
     padding: 3%;
     margin-bottom: 3%;
-    border: solid 2px transparent;
+    border: solid 2px black;
     border-radius: 10px;
-    /* border-style: none; */
-    transition: .3s ease all;
-    
-}
-
-.inputInicio:focus {
-    border: 1px solid #e7e7e7;
-    outline: none;
-    box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
+    border-style: none;
 }
 
 .btn-InicioSesion {
@@ -199,7 +202,7 @@ body {
     width: 100%;
     height: 900px;
     margin: 5% 0;
-    background-color: #03071e;
+    background-color:#8aa6be;
     background-size: 500px;
     display: flex;
     flex-direction: column;
@@ -207,10 +210,7 @@ body {
     align-items: center;
 
 }
-
 /* contenedor del formulario */
-
-
 
 #registrarUsuario {
     width: 100%;
@@ -220,6 +220,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#registrarUsuario p{
+    color: #942626;
+    font-size: 0.8rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
 
 }
 
@@ -324,7 +332,29 @@ label {
     border-radius: 15px;
 
 }
-
+input #file-upload-button{
+    width: 100%;
+    height: 10%;
+}
+.btn-Publicar{
+    width: 25%;
+    height: 2rem;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    background-color: #CDFF06;
+    font-weight: 700;
+    cursor: pointer;
+    border-style: none;
+}
+.btn-Publicar:hover {
+    background-color: rgba(60, 61, 92, 1);
+    color: aliceblue;
+    transition: all 0.5s ease;
+}
+/* .divComentarios{
+    width:100% ;
+    height: 100%;
+} */
 .contenedorFoto {
     width: 100%;
     padding: 0 0 0 5%;
@@ -333,6 +363,8 @@ label {
     align-items: center;
     margin-top: 10%;
 }
+
+
 
 .contenedorFoto img {
     width: 60px;
@@ -369,27 +401,10 @@ label {
 
 
 .contenedorPost img {
-
-    width: 300px;
-    height: 300px;
-
-}
-
-
-.corazon {
-    /* background-color: transparent;
-    border: none; */
-    margin: 10px;
-    font-size: 10px;
-    outline: none;
-    color: grey;
-    width: 10px;
-    height: 10px;
-    padding: 8px;
-}
-
-.corazon i{
-cursor: pointer;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 250px;
+    height: 250px;
 }
 
 .formComen {
@@ -399,11 +414,61 @@ cursor: pointer;
     justify-content: center;
     align-items: center;
 }
+.divComentarios{
+    width: 100%;
+    height: max-content;
+    margin-bottom: 15%; 
+}
+.card-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+}
+.divBotonesWall{
+    width: 70%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 
+.card-body p{
+    margin-bottom: 1%;
+}
+
+.btn{
+    margin-right: 5%;
+    background-color: #8aa6be;
+    color: rgb(255, 255, 255);
+    transition: all 0.5s ease;
+    border-style: none;
+    border-radius: 5px;
+    font-weight: 700;
+    padding: 1.3%;
+}
+
+.btn:hover{
+    background-color: #2c4052;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+   
+}
+
+.comentUser{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+.divBotones{
+    margin-top: 15%;
+}
 .enviarComentario {
     width: 25%;
     height: 2rem;
-    margin-top: 30%;
+    margin-bottom: 5%;
     border-radius: 10px;
     background-color: #CDFF06;
     font-weight: 700;
