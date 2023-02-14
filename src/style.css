@@ -19,7 +19,7 @@ body {
 #root {
     /* background-image: url(img/fondo4.jpg); */
     /* backdrop-filter: ; */
-    background-color: #8aa6be;
+    
     width: 100%;
     height: max-content;
     display: flex;
@@ -31,13 +31,13 @@ body {
 /*PANTALLA HOME*/
 
 .ContainerPadre {
+    background-color: #8aa6be;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: max-content;
-    margin: 5% 0;
     background-size: cover;
     overflow: hidden;
     overflow-y: scroll;
@@ -48,11 +48,6 @@ body {
 .imagen {
     filter: blur(5px);
 }
-/* .logoApp{
-   width: 18rem;
-   height: 18rem;
-   
-} */
 
 .contenedorHeader {
      display: flex;
@@ -324,17 +319,14 @@ label {
 
 .contenedorMuro {
     width: 100%;
-    height: 900px;
-    margin: 5% 0;
+    height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     background-size: 500px;
-    border: solid 2px black;
-    border-radius: 15px;
-
+ 
 }
 input #file-upload-button{
     width: 100%;
@@ -396,6 +388,7 @@ input #file-upload-button{
 }
 
 .textPost {
+    font-family: 'Quicksand', sans-serif;
     width: 80%;
     height: max-content;
     padding: 3%;
@@ -440,6 +433,9 @@ input #file-upload-button{
     }
 
 .card-body p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
     background: aliceblue;
     padding: 2%;
     border-radius: 10px;
@@ -527,11 +523,47 @@ white-space: nowrap;
 @media screen and (min-width:768px){
   .ContainerPadre{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .contenedorInicioGoogle{
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
+    gap: 1rem;
+    padding-bottom: 5%;
+}
+.contenedorInicioGoogle{
     grid-column: 2;
   }
+.inputInicio {
+    width: 50%;
+    padding: 2%;
+}  
+
+.btn-InicioSesion{
+    width: 50%;
+    padding: 2%;
+}
+#btn-inicioGoogle {
+    width: 50%;
+    padding: 2%;
+}
+.contenedorHeader h1 {
+    font-size: 3.5rem;
+}
+.textPost{
+    width: 50%;
+    height: 30%;
+    padding: 2%;
+    margin-bottom: 5%;
+    border-style: none;
+}
+.divBotonesWall{
+    width: 25%;
+}
+.btn{
+    width: 2rem;
+    height: 2rem;
+}
+}
+  
+
 /* 
   .fondoChica{
     display: block;
