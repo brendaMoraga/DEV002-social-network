@@ -1,5 +1,6 @@
 import { onNavigate } from '../main.js';
 import { authGoogle, authSing } from '../lib/firebase.js';
+import{auth} from '../init.js';
 
 // ESTRUCTURA HTML PRIMERA VISUAL
 
@@ -8,11 +9,11 @@ export const Home = () => {
   HomeDiv.classList.add('ContainerPadre');
   HomeDiv.innerHTML = /* html */`
     <header class="contenedorHeader">
-    <h1>View my Music</h1>
-    <p>TODOS TUS CONCIERTOS DE MÚSICA <br> EN UN SÓLO LUGAR</p>
+  <h1>View my Music</h1>
+  <p>"TODOS TUS CONCIERTOS DE MÚSICA EN UN SÓLO LUGAR"</p>
   </header> 
  <div class="contendorInicio">
-    <form id="form-InicioSesion" >
+    <form id="form-InicioSesion" class='formInicioSesion' >
         <input type="email" placeholder="Ingresa correo" class="inputInicio" id='correoUsuario'>
         <p id='errorCorreo'> </p>
         <input type="password" placeholder="Ingresar Contraseña" class="inputInicio" id='contraseñaUsuario'>
@@ -47,23 +48,23 @@ window.addEventListener('load', () => {
       e.preventDefault();
       const email = document.querySelector('#correoUsuario').value;
       const password = document.querySelector('#contraseñaUsuario').value;
-      const inicirSesi = await authSing(email, password);
+      const inicirSesi = await authSing(auth,email, password);
+      console.log(inicirSesi)
       if (inicirSesi === 'Firebase: Error (auth/user-not-found).') {
         const parrafoError = document.getElementById('errorCorreo');
         parrafoError.innerHTML = 'correo electrónico no registrado';
-        parrafoError.style.color = '#ff0000';
       } else if (inicirSesi === 'Firebase: Error (auth/wrong-password).') {
         const parrafoError = document.getElementById('errorContraseña');
         parrafoError.innerHTML = 'Contraseña invalida';
-        parrafoError.style.color = '#ff0000';
+      
       } else if (inicirSesi === 'Firebase: Error (auth/invalid-email).') {
         const parrafoError = document.getElementById('errorCorreo');
         parrafoError.innerHTML = 'Los campos estan vacios';
-        parrafoError.style.color = '#ff0000';
+       
       } else if (inicirSesi === 'Firebase: Error (auth/internal-error).') {
         const parrafoError = document.getElementById('errorContraseña');
         parrafoError.innerHTML = 'Los campos estan vacios';
-        parrafoError.style.color = '#ff0000';
+       
       } else {
         formSesion.reset();
         onNavigate('/wall');
