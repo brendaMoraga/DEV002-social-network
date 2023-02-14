@@ -19,10 +19,9 @@ body {
 #root {
     /* background-image: url(img/fondo4.jpg); */
     /* backdrop-filter: ; */
-    background-color: #8aa6be;
-    width: 375px;
-    /* height: max-content; */
-    height: 900px;
+    
+    width: 100%;
+    height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,9 +31,13 @@ body {
 /*PANTALLA HOME*/
 
 .ContainerPadre {
+    background-color: #8aa6be;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
     width: 100%;
-    height: 900px;
-    margin: 5% 0;
+    height: max-content;
     background-size: cover;
     overflow: hidden;
     overflow-y: scroll;
@@ -45,11 +48,6 @@ body {
 .imagen {
     filter: blur(5px);
 }
-/* .logoApp{
-   width: 18rem;
-   height: 18rem;
-   
-} */
 
 .contenedorHeader {
      display: flex;
@@ -161,7 +159,6 @@ body {
 
 #btn-inicioGoogle {
     width: 70%;
-    height: 100%;
     padding: 3%;
     margin-bottom: 5%;
     border-radius: 50px;
@@ -187,10 +184,12 @@ body {
 }
 
 .contenedorLinkRegis p {
+    font-size: 0.8rem;
     color: azure;
 }
 
 .contenedorLinkRegis a {
+    font-size: 0.8rem;
     text-decoration: none;
     color: #CDFF06;
     font-weight: 700;
@@ -320,17 +319,14 @@ label {
 
 .contenedorMuro {
     width: 100%;
-    height: 900px;
-    margin: 5% 0;
+    height: max-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
     background-size: 500px;
-    border: solid 2px black;
-    border-radius: 15px;
-
+ 
 }
 input #file-upload-button{
     width: 100%;
@@ -392,6 +388,7 @@ input #file-upload-button{
 }
 
 .textPost {
+    font-family: 'Quicksand', sans-serif;
     width: 80%;
     height: max-content;
     padding: 3%;
@@ -422,38 +419,49 @@ input #file-upload-button{
 .card-body{
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: max-content;
 }
 .divBotonesWall{
     width: 70%;
+    width: 50%;
     margin-left: 10%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     }
 
 .card-body p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    background: aliceblue;
+    padding: 2%;
+    border-radius: 10px;
     margin-bottom: 1%;
+    overflow: hidden;
+white-space: nowrap;
 }
 
 .btn{
     margin-right: 5%;
     background-color: #8aa6be;
     color: rgb(255, 255, 255);
-    transition: all 0.5s ease;
-    border-style: none;
+     border-style: none;
     border-radius: 5px;
+    font-size: 1rem;
+    width: 12%;
+    height: 12%;
     font-weight: 700;
     padding: 1.3%;
-}
+   }
 
 .btn:hover{
     background-color: #2c4052;
     color: rgb(255, 255, 255);
     cursor: pointer;
+    transition: all 0.5s ease;
    
 }
 
@@ -495,7 +503,7 @@ input #file-upload-button{
     width: 25%;
     height: 2rem;
     margin-right: 5%;
-    margin-top: 15%;
+   
 }
 
 .salir:hover {
@@ -507,3 +515,62 @@ input #file-upload-button{
     width: 80%;
     height: max-content;
 }
+.fondoChica{
+    display: none;
+}
+/* responsive: */
+
+@media screen and (min-width:768px){
+  .ContainerPadre{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 1fr));
+    gap: 1rem;
+    padding-bottom: 5%;
+}
+.contenedorInicioGoogle{
+    grid-column: 2;
+  }
+.inputInicio {
+    width: 50%;
+    padding: 2%;
+}  
+
+.btn-InicioSesion{
+    width: 50%;
+    padding: 2%;
+}
+#btn-inicioGoogle {
+    width: 50%;
+    padding: 2%;
+}
+.contenedorHeader h1 {
+    font-size: 3.5rem;
+}
+.textPost{
+    width: 50%;
+    height: 30%;
+    padding: 2%;
+    margin-bottom: 5%;
+    border-style: none;
+}
+.divBotonesWall{
+    width: 25%;
+}
+.btn{
+    width: 2rem;
+    height: 2rem;
+}
+}
+  
+
+/* 
+  .fondoChica{
+    display: block;
+    width: 400px;
+    height: 400px;    ;
+} */
+/* .contenedorHeader p{
+    margin-bottom: 0;
+}
+} */
