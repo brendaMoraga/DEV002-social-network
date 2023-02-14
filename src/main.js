@@ -47,3 +47,15 @@ root.appendChild(component());
 
 
 
+// Una promesa en JavaScript es un objeto
+//  que representa un valor que puede no estar 
+//  disponible en el momento en que se crea la promesa, 
+//  pero que se espera que esté disponible en algún 
+//  momento en el futuro. Las promesas se utilizan para 
+//  manejar operaciones asíncronas y permiten ejecutar 
+//  código en función de si una operación se ha completado
+//   con éxito o si ha ocurrido algún error. Las promesas 
+//   pueden tener diferentes estados, como "pendiente" 
+//   (pending), "cumplida" (fulfilled) o "rechazada" 
+//   (rejected), y se pueden encadenar para crear flujos
+//    de control más complejos.

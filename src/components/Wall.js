@@ -13,6 +13,7 @@ import {
 
 import { onNavigate } from '../main.js'
 
+// 1.- IMPRIMIR EN DOM/HTML
 export const Wall = () => {
   const divWall = document.createElement('div');
   divWall.classList.add('contenedorMuro');
